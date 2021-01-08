@@ -1,5 +1,6 @@
 const HttpError = require("../models/http-error");
 const Group = require("../models/group");
+const User = require("../models/user");
 const { body } = require("express-validator");
 
 const getAllGroups = async (req, res, next) => {
@@ -25,8 +26,19 @@ const createGroup = async (req, res, next) => {
         leader,
         shop,
         status: "OnGoing",
-        users: [],
+        order: [],
     });
+    let user;
+    try {
+        user = await User.findById(leader);
+    } catch (error) {
+        const err = new HttpError("Create Group failed, please try again", 500);
+        return next(err);
+    }
+    if (!user) {
+        const error = new HttpError("Invalid user", 500);
+        return next(error);
+    }
     try {
         await newGroup.save();
     } catch (err) {

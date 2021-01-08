@@ -63,6 +63,7 @@ const signup = async (req, res, next) => {
         name,
         email,
         password: hashedPassword,
+        groups: [],
     });
 
     // console.log(createdUser);
@@ -121,6 +122,7 @@ const login = async (req, res, next) => {
         );
         return next(error);
     }
+    console.log(existingUser);
     let isValidPassword;
     try {
         isValidPassword = await bcrypt.compare(password, existingUser.password);
@@ -138,20 +140,19 @@ const login = async (req, res, next) => {
         );
         return next(error);
     }
-
     let token;
     try {
         token = jwt.sign(
-            { userId: createdUser.id, email: createdUser.email },
+            { userId: existingUser.id, email: existingUser.email },
             "secret_key",
             { expiresIn: "1h" }
         );
-    } catch (error) {
-        const err = new HttpError(
-            "Signing up failed, please try again later.",
+    } catch (err) {
+        const error = new HttpError(
+            "Logged in failed, please try again later",
             500
         );
-        return next(err);
+        return next(error);
     }
 
     res.json({
