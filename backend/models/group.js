@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const groupSchema = new Schema({
-    leader: { type: String, required: true },
+    leader: { type: mongoose.Types.ObjectId, required: true, ref: "User" },
     shop: { type: String, required: true },
     status: { type: String, required: true },
-    users: { type: Array, required: true },
+    orders: [{ type: mongoose.Types.ObjectId, required: true, ref: "Order" }],
 });
 
 // userSchema.plugin(uniqueValidator);
