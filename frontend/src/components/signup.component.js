@@ -1,4 +1,5 @@
 import React, { Component, useState, onClick } from "react";
+import {SignUpSubmit} from './axios/user'
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -17,8 +18,12 @@ export default function SignUp() {
         setUsername(e.target.value);
     };
 
-    const clickSignup = (e) => {
+    const clickSignup = async (e) => {
         //TODO
+        e.preventDefault()
+        console.log('click signup')
+        const token = await SignUpSubmit(username,password,email)
+        console.log(token)
     };
 
     return (
