@@ -20,26 +20,52 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Top from './header/Header'
 import TopComp from './header/Header_Component'
 import MainContent from './main/main'
+import Login from './component/Login/Login'
 
 function App() {
 
   const [login, setLogin] = useState(false)
-  const attributes = {
-    login:login,
-    setLogin:setLogin,
+  
+  const startmenu = (login,setLogin) =>{
+    return(
+    <>
+    <Top/>
+    <Login login = {login} setLogin = {setLogin} />
+    </>
+    )
   }
 
-  const head = (attributes) =>{
-    
+  const ifLogin = (login,setLogin) => {
+    if(login)
+    {
       return(
       <>
-      <Top/>
-      <TopComp attributes = {attributes} />
+        <div class="header">
+          <Top/>
+          <TopComp />      
+        </div>
+
+        <MainContent />
       </>
       )
-    
+    }
+    else
+    {
+      return(
+        startmenu(login,setLogin)
+      )
+    }
   }
 
+  return (
+  <>
+  {ifLogin(login,setLogin)}
+  </>
+  )
+}
+
+
+/*
   return (
   <>
     <div class="header">
@@ -49,7 +75,7 @@ function App() {
 
     <MainContent attributes = {attributes}/>
   </>
-  );
-}
+  );*/
+
 
 export default App;
