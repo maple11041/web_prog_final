@@ -1,10 +1,9 @@
 import React, { Component, useState ,onClick } from "react";
 
-export default function SignUp(){
+export default function Login  ()  {
     
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const [username,setUsername] = useState('')
 
     const typingEmail = (e)=>{
         setEmail(e.target.value)
@@ -14,23 +13,13 @@ export default function SignUp(){
         setPassword(e.target.value)
     }
 
-    const typingUsername = (e)=>{
-        setUsername(e.target.value)
-    }
-
-    const clickSignup = (e) => {
+    const clickLogin = (e) => {
         //TODO
     }
 
     return (
         <form>
-            <h3>Sign Up</h3>
-
             
-            <div className="form-group">
-                <label>Username</label>
-                <input value = {username} onChange = {typingUsername} type="text" className="form-control" placeholder="Username" />
-            </div>
 
             <div className="form-group">
                 <label>Email address</label>
@@ -42,9 +31,16 @@ export default function SignUp(){
                 <input value = {password} onChange = {typingPassword} type="password" className="form-control" placeholder="Enter password" />
             </div>
 
-            <button onClick = {clickSignup} type="submit" className="btn btn-primary btn-block">Sign Up</button>
+            <div className="form-group">
+                <div className="custom-control custom-checkbox">
+                    <input type="checkbox" onClick = {clickLogin} className="custom-control-input" id="customCheck1" />
+                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary btn-block">Submit</button>
             <p className="forgot-password text-right">
-                Already registered <a href="#">sign in?</a>
+                Forgot <a href="#">password?</a>
             </p>
         </form>
     );

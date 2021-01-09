@@ -1,9 +1,10 @@
 import React, { Component, useState ,onClick } from "react";
 
-export default function Login  ()  {
+export default function SignUp(){
     
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const [username,setUsername] = useState('')
 
     const typingEmail = (e)=>{
         setEmail(e.target.value)
@@ -13,13 +14,23 @@ export default function Login  ()  {
         setPassword(e.target.value)
     }
 
-    const clickLogin = (e) => {
+    const typingUsername = (e)=>{
+        setUsername(e.target.value)
+    }
+
+    const clickSignup = (e) => {
         //TODO
     }
 
     return (
         <form>
-            <h3>Sign In</h3>
+            
+
+            
+            <div className="form-group">
+                <label>Username</label>
+                <input value = {username} onChange = {typingUsername} type="text" className="form-control" placeholder="Username" />
+            </div>
 
             <div className="form-group">
                 <label>Email address</label>
@@ -31,16 +42,9 @@ export default function Login  ()  {
                 <input value = {password} onChange = {typingPassword} type="password" className="form-control" placeholder="Enter password" />
             </div>
 
-            <div className="form-group">
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" onClick = {clickLogin} className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                </div>
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-block">Submit</button>
+            <button onClick = {clickSignup} type="submit" className="btn btn-primary btn-block">Sign Up</button>
             <p className="forgot-password text-right">
-                Forgot <a href="#">password?</a>
+                Already registered <a href="#">sign in?</a>
             </p>
         </form>
     );

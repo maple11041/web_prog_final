@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+
+.mlb-box-text{
+  color: black;
+}
+
+
+.mlb-box-list{
+  display: list-item;
+  width:50%;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 28px;
+  border-bottom-width:  4px;
+  border-color: transparent;
+  border-bottom-style: solid;
+}
+
+.selected-mlb-box-list{
+  border-color: rgb(255,194,33);
+}
+
+.mlb-box{
+  box-sizing: border-box;
+  color: rgb(51,51,51);
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  width:100%;
+}
+
+.navbar-light {
+  background-color: transparent;
+  //box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.auth-inner {
+  width: 450px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+}
