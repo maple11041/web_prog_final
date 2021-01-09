@@ -12,7 +12,7 @@ const NavBar = () => {
                 >
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to={"/sign-in"}>
+                            <Link className="nav-link" to={"/shop"}>
                                 開團
                             </Link>
                         </li>

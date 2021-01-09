@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
+import Shops from "./components/Shops";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route exact path="/" component={Login} />
                     <Route path="/sign-in" component={Login} />
                     <Route path="/sign-up" component={SignUp} />
+                    <Route path="/shop" component={Shops} />
                 </Switch>
             </div>
         </Router>
