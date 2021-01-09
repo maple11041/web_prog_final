@@ -1,6 +1,6 @@
 import React, { Component, useState ,onClick } from "react";
 
-export default function SignUp(){
+export default function SignUp({login,setLogin}){
     
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
