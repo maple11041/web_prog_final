@@ -7,6 +7,7 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
+import OnGoing from "./components/OnGoing"
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/sign-in" component={Login} />
                     <Route path="/sign-up" component={SignUp} />
                     <Route path="/shop" component={Shops} />
+                    <Route path="/ongoing" component={OnGoing} />
                 </Switch>
             </div>
         </Router>

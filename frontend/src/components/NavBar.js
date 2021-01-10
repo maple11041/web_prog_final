@@ -16,6 +16,11 @@ const NavBar = () => {
                                 開團
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={"/ongoing"}>
+                                團訂事件
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="collapse navbar-collapse">
