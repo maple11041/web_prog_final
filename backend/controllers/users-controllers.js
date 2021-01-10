@@ -20,15 +20,18 @@ const getUsers = async (req, res, next) => {
 };
 
 const signup = async (req, res, next) => {
-    const errors = validationResult(req);
+    // const errors = validationResult(req);
     // console.log(req.body);
-    if (!errors.isEmpty()) {
-        return next(
-            new HttpError("Invalid inputs passed, please check your data.", 422)
-        );
-    }
+    // if (!errors.isEmpty()) {
+    //     console.log(errors);
+    //     return next(
+    //         new HttpError("Invalid inputs passed, please check your data.", 422)
+    //     );
+    // }
+    console.log(req);
     const { name, email, password } = req.body;
 
+    console.log(name);
     let existingUser;
     try {
         existingUser = await User.findOne({ email: email });
