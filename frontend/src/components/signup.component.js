@@ -5,6 +5,7 @@ export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    //const alert = useAlert()
 
     const typingEmail = (e) => {
         setEmail(e.target.value);
@@ -19,11 +20,21 @@ export default function SignUp() {
     };
 
     const clickSignup = async (e) => {
-        //TODO
         e.preventDefault()
         console.log('click signup')
-        const token = await SignUpSubmit(username,password,email)
-        console.log(token)
+        const back = await SignUpSubmit(username,password,email)
+        console.log(back)
+        setUsername('')
+        setPassword('')
+        setEmail('')
+        if(!back.token)
+        {
+            alert(back.err)
+        }
+        else
+        {
+            //TODO signup後要幹嘛
+        }
     };
 
     return (
