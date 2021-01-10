@@ -1,9 +1,11 @@
 import React, { Component, useState, onClick } from "react";
+import {SignUpSubmit} from './axios/user'
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    //const alert = useAlert()
 
     const typingEmail = (e) => {
         setEmail(e.target.value);
@@ -17,8 +19,22 @@ export default function SignUp() {
         setUsername(e.target.value);
     };
 
-    const clickSignup = (e) => {
-        //TODO
+    const clickSignup = async (e) => {
+        e.preventDefault()
+        console.log('click signup')
+        const back = await SignUpSubmit(username,password,email)
+        console.log(back)
+        setUsername('')
+        setPassword('')
+        setEmail('')
+        if(!back.token)
+        {
+            alert(back.err)
+        }
+        else
+        {
+            //TODO signup後要幹嘛
+        }
     };
 
     return (

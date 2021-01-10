@@ -1,4 +1,5 @@
 import React, { Component, useState, onClick } from "react";
+import {LoginSubmit} from './axios/user'
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -12,8 +13,21 @@ export default function Login() {
         setPassword(e.target.value);
     };
 
-    const clickLogin = (e) => {
-        //TODO
+    const clickLogin = async (e) => {
+        e.preventDefault()
+        console.log('click login')
+        const back = await LoginSubmit(email,password)
+        console.log(back)
+        setPassword('')
+        setEmail('')
+        if(!back.token)
+        {
+            alert(back.err)
+        }
+        else
+        {
+            //TODO Login後要幹嘛
+        }
     };
 
     return (
@@ -48,7 +62,6 @@ export default function Login() {
                         <div className="custom-control custom-checkbox">
                             <input
                                 type="checkbox"
-                                onClick={clickLogin}
                                 className="custom-control-input"
                                 id="customCheck1"
                             />
@@ -61,7 +74,8 @@ export default function Login() {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block">
+                    <button type="submit" className="btn btn-primary btn-block" 
+                                onClick={clickLogin}>
                         Submit
                     </button>
                     <p className="forgot-password text-right">
