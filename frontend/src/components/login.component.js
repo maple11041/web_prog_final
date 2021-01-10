@@ -14,11 +14,20 @@ export default function Login() {
     };
 
     const clickLogin = async (e) => {
-        //TODO
         e.preventDefault()
         console.log('click login')
-        const token = await LoginSubmit(email,password)
-        console.log(token)
+        const back = await LoginSubmit(email,password)
+        console.log(back)
+        setPassword('')
+        setEmail('')
+        if(!back.token)
+        {
+            alert(back.err)
+        }
+        else
+        {
+            //TODO Login後要幹嘛
+        }
     };
 
     return (
