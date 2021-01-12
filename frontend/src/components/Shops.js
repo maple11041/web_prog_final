@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import {
     Card,
     CardImg,
@@ -9,63 +9,58 @@ import {
     Row,
     Col,
     CardSubtitle,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
 } from "reactstrap";
 import "./Shop.css";
 
-const Shops = () => {
+const Shops = ({ shops }) => {
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+    // console.log(shops.body);
+    const render = shops.body.map((shop) => {
+        return (
+            <Col xs="12" md="4" lg="3">
+                <Card>
+                    <CardImg top width="30px" height="200px" src={shop.img} />
+                    <CardBody>
+                        <CardTitle tag="h2">{shop.title}</CardTitle>
+                        <CardText>{shop.text}</CardText>
+                        <Button>查看菜單</Button>
+                        <Button onClick={toggle}>我要開團</Button>
+                    </CardBody>
+                </Card>
+            </Col>
+        );
+    });
+    // console.log(render);
+
     return (
         <div className="shop-wrapper">
             <div className="shop-container">
-                <h2>飲料店總覽</h2>
-                <Row>
-                    <Col>
-                        <Card>
-                            <CardImg
-                                top
-                                width="50%"
-                                height="20%"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdsakNc9_icV4v2aGsPcTiuRSlU1Ya2UQ5g&usqp=CAU"
+                <h2>{shops.title}</h2>
+                <Row>{render}</Row>
+                <Modal isOpen={modal} toggle={toggle}>
+                    <ModalHeader>50嵐</ModalHeader>
+                    <ModalBody>
+                        <div className="form-group">
+                            <label>想說的話</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                placeholder="請輸入文字..."
                             />
-                            <CardBody>
-                                <CardTitle>50嵐</CardTitle>
-                                <CardText>飲料店</CardText>
-                                <Button>我要開團</Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    <Col xs="12" md="4">
-                        <Card>
-                            <CardImg
-                                top
-                                width="50%"
-                                src="https://wrappixel.com/demos/free-admin-templates/materialpro-reactadmin-lite/main/static/media/img1.f098478b.jpg"
-                            />
-                            <CardBody>
-                                <CardTitle>Card title</CardTitle>
-                                <CardText>
-                                    Some quick example text to build on the card
-                                </CardText>
-                                <Button>Button</Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                    <Col xs="12" md="4">
-                        <Card>
-                            <CardImg
-                                top
-                                width="100%"
-                                src="https://wrappixel.com/demos/free-admin-templates/materialpro-reactadmin-lite/main/static/media/img1.f098478b.jpg"
-                            />
-                            <CardBody>
-                                <CardTitle>Card title</CardTitle>
-                                <CardText>
-                                    Some quick example text to build on the card
-                                </CardText>
-                                <Button>Button</Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                </Row>
+                        </div>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={toggle}>
+                            取消
+                        </Button>
+                        <Button color="primary">送出</Button>
+                    </ModalFooter>
+                </Modal>
             </div>
         </div>
     );
