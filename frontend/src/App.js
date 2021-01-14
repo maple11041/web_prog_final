@@ -13,6 +13,7 @@ import Shops from "./components/Shops";
 import JoinGroup from "./components/JoinGroup";
 import Sidebar from "./components/Sidebar";
 import MyGroup from "./components/MyGroup";
+import Menu from "./components/Menu";
 
 function App() {
     const [username, setUsername] = useState("Guest");
@@ -96,6 +97,7 @@ function App() {
                             />
                         )}
                     />
+                    <Route path="/order" component={Menu} />
                 </Switch>
             </div>
         </Router>
