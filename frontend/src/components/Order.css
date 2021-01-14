@@ -1,0 +1,14 @@
+.order-wrapper {
+    /* display: flex; */
+    width: 80%;
+    /* text-align: center; */
+    margin: 0 auto;
+    margin-top: 10%;
+    /* padding: 5%; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.order-wrapper .card {
+    padding: 0%;
+}

@@ -7,6 +7,7 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
+import Orders from "./components/Orders";
 
 function App() {
     const shopData = {
@@ -44,6 +45,7 @@ function App() {
                         path="/shop"
                         component={() => <Shops shops={shopData} />}
                     />
+                    <Route path="/orders" component={Orders} />
                 </Switch>
             </div>
         </Router>
