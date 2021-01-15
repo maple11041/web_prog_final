@@ -160,7 +160,7 @@ const login = async (req, res, next) => {
 
     res.json({
         userId: existingUser.id,
-        email: existingUser.email,
+        name: existingUser.name,
         token: token,
     });
 };
