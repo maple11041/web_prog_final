@@ -20,11 +20,12 @@ const getAllGroups = async (req, res, next) => {
 };
 
 const createGroup = async (req, res, next) => {
-    const { leader, shop } = req.body;
+    const { leader, shop, description } = req.body;
 
     const newGroup = new Group({
         leader,
         shop,
+        description,
         status: "OnGoing",
         order: [],
     });

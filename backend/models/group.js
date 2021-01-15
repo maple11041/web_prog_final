@@ -8,6 +8,7 @@ const groupSchema = new Schema({
     shop: { type: String, required: true },
     status: { type: String, required: true },
     orders: [{ type: mongoose.Types.ObjectId, required: true, ref: "Order" }],
+    description: { type: String },
 });
 
 // userSchema.plugin(uniqueValidator);
