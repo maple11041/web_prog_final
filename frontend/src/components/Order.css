@@ -12,3 +12,12 @@
 .order-wrapper .card {
     padding: 0%;
 }
+
+tr .border {
+    margin-left: 0;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}

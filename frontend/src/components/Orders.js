@@ -19,130 +19,74 @@ const Orders = () => {
         <div className="order-wrapper">
             <Card>
                 <CardBody>
-                    <div className="d-flex align-items-center">
-                        <div>
-                            <CardTitle>Projects of the Month</CardTitle>
-                            <CardSubtitle>
-                                Overview of Latest Month
-                            </CardSubtitle>
-                        </div>
-                        <div className="ml-auto d-flex no-block align-items-center">
-                            <div className="dl">
-                                <Input type="select" className="custom-select">
-                                    <option value="0">Monthly</option>
-                                    <option value="1">Daily</option>
-                                    <option value="2">Weekly</option>
-                                    <option value="3">Yearly</option>
-                                </Input>
-                            </div>
-                        </div>
-                    </div>
                     <Table className="no-wrap v-middle" responsive>
                         <thead>
                             <tr className="border-0">
-                                <th className="border-0">Team Lead</th>
-                                <th className="border-0">Project</th>
-
+                                <th className="border-0">訂購人</th>
+                                <th className="border-0">品項</th>
+                                <th className="border-0">金額</th>
                                 <th className="border-0">Status</th>
-                                <th className="border-0">Weeks</th>
-                                <th className="border-0">Budget</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <div className="d-flex no-block align-items-center">
-                                        <div className="">
-                                            <h5 className="mb-0 font-16 font-medium">
-                                                Hanna Gover
-                                            </h5>
-                                            <span>hgover@gmail.com</span>
-                                        </div>
-                                    </div>
+                                    <h5 className="mb-0 font-16 font-medium">
+                                        Hanna Gover
+                                    </h5>
                                 </td>
                                 <td>Elite Admin</td>
-
+                                <td>$100</td>
                                 <td>
                                     <i
                                         className="fa fa-circle text-warning"
                                         id="tlp1"
                                     ></i>
                                 </td>
-                                <td>35</td>
-                                <td className="blue-grey-text  text-darken-4 font-medium">
-                                    $96K
-                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="d-flex no-block align-items-center">
-                                        <div className="">
-                                            <h5 className="mb-0 font-16 font-medium">
-                                                Daniel Kristeen
-                                            </h5>
-                                            <span>Kristeen@gmail.com</span>
-                                        </div>
-                                    </div>
+                                    <h5 className="mb-0 font-16 font-medium">
+                                        Daniel Kristeen
+                                    </h5>
                                 </td>
                                 <td>Xtreme Admin</td>
-
+                                <td>$100</td>
                                 <td>
                                     <i
                                         className="fa fa-circle text-success"
                                         id="tlp2"
                                     ></i>
                                 </td>
-                                <td>35</td>
-                                <td className="blue-grey-text  text-darken-4 font-medium">
-                                    $96K
-                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="d-flex no-block align-items-center">
-                                        <div className="">
-                                            <h5 className="mb-0 font-16 font-medium">
-                                                Julian Josephs
-                                            </h5>
-                                            <span>Josephs@gmail.com</span>
-                                        </div>
-                                    </div>
+                                    <h5 className="mb-0 font-16 font-medium">
+                                        Julian Josephs
+                                    </h5>
                                 </td>
                                 <td>Admin-Pro Admin</td>
-
+                                <td>$100</td>
                                 <td>
                                     <i
                                         className="fa fa-circle text-success"
                                         id="tlp3"
                                     ></i>
                                 </td>
-                                <td>35</td>
-                                <td className="blue-grey-text  text-darken-4 font-medium">
-                                    $96K
-                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div className="d-flex no-block align-items-center">
-                                        <div className="">
-                                            <h5 className="mb-0 font-16 font-medium">
-                                                Jan Petrovic
-                                            </h5>
-                                            <span>hgover@gmail.com</span>
-                                        </div>
-                                    </div>
+                                    <h5 className="mb-0 font-16 font-medium">
+                                        Jan Petrovic
+                                    </h5>
                                 </td>
                                 <td>Admin-Wrap Admin</td>
-
+                                <td>$100</td>
                                 <td>
                                     <i
                                         className="fa fa-circle text-warning"
                                         id="tlp4"
                                     ></i>
-                                </td>
-                                <td>35</td>
-                                <td className="blue-grey-text  text-darken-4 font-medium">
-                                    $96K
                                 </td>
                             </tr>
                         </tbody>
