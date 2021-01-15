@@ -90,17 +90,17 @@ input {
     color: var(--secondary);
 }
 
-.aside {
+/* .aside {
     grid-column: 2 / 3;
-}
+} */
 
 .extras {
     color: var(--secondary);
 }
 
-.extras {
+/* .extras {
     margin-top: 1.5rem;
-}
+} */
 
 @media (min-width: 660px) {
     .extras + .extras {
@@ -116,7 +116,6 @@ input {
 
 .extras-heading {
     margin: 0 0 1.5rem;
-    padding: 20px;
     border-bottom: 1px solid var(--secondary);
 }
 
@@ -152,3 +151,18 @@ input {
 .total-price {
     font-size: 1.5rem;
 }
+.menu {
+    margin-bottom: 2%;
+}
+h5.large {
+    display: inline;
+    margin-left: 50%;
+}
+
+h5.med {
+    display: inline;
+    margin-left: 20%;
+}
+/* .menu > .button-wrapper {
+    justify-content: center;
+} */
