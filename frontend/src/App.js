@@ -98,6 +98,7 @@ function App() {
                         )}
                     />
                     <Route path="/order" component={Menu} />
+                    <Route path="/menu" component={Menu} />
                 </Switch>
             </div>
         </Router>
