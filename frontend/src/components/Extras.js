@@ -1,19 +1,33 @@
 import React from "react";
 import Input from "./Input";
 
-export default function Extras({ type, items }) {
+export default function Extras({ type, items, orderItems, setOrderItems }) {
+    // console.log(items[0].price_L);
     return (
         <section className="extras">
-            <h2 className="extras-heading">{type}</h2>
-            <h5 className="large">L</h5>
-            <h5 className="med">M</h5>
+            <h5 className="large">M</h5>
+            <h5 className="med">L</h5>
             {items.map((item, index) => (
+                // console.log(item)
+                // console.log(item.price)
                 <article className="menu-item" key={index}>
                     <div className="extras-name">{item.name}</div>
-                    <Input type={type} name={item.name} index={index} />
-                    <strong className="extras-price">${item.price}</strong>
-                    <Input type={type} name={item.name} index={index} />
-                    <strong className="extras-price">${item.price}</strong>
+                    <Input
+                        type="M"
+                        index={index}
+                        price={item.price_M}
+                        orderItems={orderItems}
+                        setOrderItems={setOrderItems}
+                    />
+                    <strong className="extras-price">${item.price_M}</strong>
+                    <Input
+                        type="L"
+                        index={index}
+                        price={item.price_M}
+                        orderItems={orderItems}
+                        setOrderItems={setOrderItems}
+                    />
+                    <strong className="extras-price">${item.price_L}</strong>
                 </article>
             ))}
         </section>

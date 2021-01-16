@@ -94,6 +94,10 @@ input {
     grid-column: 2 / 3;
 } */
 
+.extra-wrapper {
+    display: block;
+}
+
 .extras {
     color: var(--secondary);
 }
@@ -112,6 +116,7 @@ input {
     margin-top: 0%;
     padding: 2%;
     margin-bottom: 0.75rem;
+    display: inline;
 }
 
 .extras-heading {
@@ -156,12 +161,12 @@ input {
 }
 h5.large {
     display: inline;
-    margin-left: 50%;
+    margin-left: 38%;
 }
 
 h5.med {
     display: inline;
-    margin-left: 18%;
+    margin-left: 22%;
 }
 /* .menu > .button-wrapper {
     justify-content: center;
