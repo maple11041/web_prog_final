@@ -1,25 +1,22 @@
 import axios from 'axios'
 
-const instance = axios.create({ baseURL: 'http://localhost:5000/api/users' })
+const instance = axios.create({ baseURL: 'http://localhost:5000/api/groups' })
 
-const LoginSubmit = async (email,password) => {
-  var token,err
+const CreateGroup = async (leader,shop) => {
+  
 
-  await instance.post('/login', {
-    email: email,
-    password: password
+  await instance.post( '/',{
+    leader:leader
+    shop:shop
   })
   .then(function (response) {
     console.log(response);
-    console.log(response.data)
-    token = response.data.token
   })
   .catch(function (error) {
     console.log(error.response);
-    err = error.response.data.message
   });
 
-  return {token,err}
+  //return {token,err}
   /*
   console.log(e_mail,password)
   const {
@@ -31,27 +28,22 @@ const LoginSubmit = async (email,password) => {
 
 
 
-const SignUpSubmit = async (name,password,email) => {
+const CheckGroup = async () => {
+  var groups
   
-  var token,err
 
-  await axios.post('http://localhost:5000/api/users/signup', {
-    email: email,
-    password: password,
-    name: name
-  })
+  await instance.get('/')
   .then(function (response) {
     console.log(response);
     console.log(response.data)
-    token = response.data.token
+    groups = response.data.groups
   })
   .catch(function (error) {
     console.log(error.response);
-    err = error.response.data.message
 
   });
   
-  return {token,err}
+  return groups
   /*
   const {
     data: { token,message }
@@ -61,4 +53,4 @@ const SignUpSubmit = async (name,password,email) => {
   */
 }
 
-export { LoginSubmit,SignUpSubmit }
+export { CreateGroup, CheckGroup }
