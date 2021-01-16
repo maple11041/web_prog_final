@@ -7,6 +7,7 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
+import Join from "./components/JoinGroup";
 
 function App() {
 
@@ -47,6 +48,10 @@ function App() {
                     <Route
                         path="/shop"
                         component={() => <Shops shops={shopData} name = {username} token = {token} />}
+                    />
+                    <Route
+                        path="/add"
+                        component={() => <Join shops={shopData} name = {username} token = {token} />}
                     />
                 </Switch>
             </div>
