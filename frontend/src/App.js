@@ -3,11 +3,15 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+// Be sure to include styles at some point, probably during your bootstraping
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
 import JoinGroup from "./components/JoinGroup";
+import Sidebar from "./components/SIdebar";
 
 function App() {
     const [username, setUsername] = useState("Guest");
@@ -38,6 +42,7 @@ function App() {
     };
     return (
         <Router>
+            <Sidebar />
             <div className="App">
                 <NavBar />
                 <Switch>
