@@ -25,16 +25,28 @@ const Sidebar = () => {
                             <NavIcon>
                                 <i
                                     className="fa fa-fw fa-home"
-                                    style={{ fontSize: "1.75em" }}
+                                    style={{ fontSize: "1.7em" }}
                                 />
                             </NavIcon>
                             <NavText>Home</NavText>
                         </NavItem>
                         <NavItem eventKey="shop">
                             <NavIcon>
-                                <i className="fa fa-beer"></i>
+                                <i
+                                    className="fa fa-users"
+                                    style={{ fontSize: "1.7em" }}
+                                ></i>
                             </NavIcon>
-                            <NavText>Shop</NavText>
+                            <NavText>我要開團</NavText>
+                        </NavItem>
+                        <NavItem eventKey="add">
+                            <NavIcon>
+                                <i
+                                    className="fa fa-beer"
+                                    style={{ fontSize: "1.75em" }}
+                                ></i>
+                            </NavIcon>
+                            <NavText>進行中的團</NavText>
                         </NavItem>
                     </SideNav.Nav>
                 </SideNav>
