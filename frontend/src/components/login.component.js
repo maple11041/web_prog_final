@@ -1,6 +1,7 @@
 import React, { Component, useState, onClick } from "react";
 import {LoginSubmit} from './axios/user'
 
+
 export default function Login({setName,setToken}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -27,6 +28,8 @@ export default function Login({setName,setToken}) {
         else
         {
             //TODO Login後要幹嘛
+            setName = back.name
+            setToken = back.token
         }
     };
 

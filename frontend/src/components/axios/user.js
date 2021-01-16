@@ -3,7 +3,7 @@ import axios from 'axios'
 const instance = axios.create({ baseURL: 'http://localhost:5000/api/users' })
 
 const LoginSubmit = async (email,password) => {
-  var token,err
+  var token,err,name
 
   await instance.post('/login', {
     email: email,
@@ -13,13 +13,14 @@ const LoginSubmit = async (email,password) => {
     console.log(response);
     console.log(response.data)
     token = response.data.token
+    name = response.data.name
   })
   .catch(function (error) {
     console.log(error.response);
     err = error.response.data.message
   });
 
-  return {token,err}
+  return {token,err,name}
   /*
   console.log(e_mail,password)
   const {
