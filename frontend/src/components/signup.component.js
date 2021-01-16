@@ -1,7 +1,7 @@
 import React, { Component, useState, onClick } from "react";
 import {SignUpSubmit} from './axios/user'
 
-export default function SignUp() {
+export default function SignUp({setName,setToken}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
