@@ -1,8 +1,7 @@
 import React, { Component, useState, onClick } from "react";
-import {LoginSubmit} from './axios/user'
+import { LoginSubmit } from "./axios/user";
 
-
-export default function Login({setName,setToken}) {
+export default function Login({ setName, setToken }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -15,21 +14,18 @@ export default function Login({setName,setToken}) {
     };
 
     const clickLogin = async (e) => {
-        e.preventDefault()
-        console.log('click login')
-        const back = await LoginSubmit(email,password)
-        console.log(back)
-        setPassword('')
-        setEmail('')
-        if(!back.token)
-        {
-            alert(back.err)
-        }
-        else
-        {
+        e.preventDefault();
+        console.log("click login");
+        const back = await LoginSubmit(email, password);
+        console.log(back);
+        setPassword("");
+        setEmail("");
+        if (!back.token) {
+            alert(back.err);
+        } else {
             //TODO Login後要幹嘛
-            setName = back.name
-            setToken = back.token
+            setName(back.userId);
+            setToken(back.token);
         }
     };
 
@@ -77,8 +73,11 @@ export default function Login({setName,setToken}) {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block" 
-                                onClick={clickLogin}>
+                    <button
+                        type="submit"
+                        className="btn btn-primary btn-block"
+                        onClick={clickLogin}
+                    >
                         Submit
                     </button>
                     <p className="forgot-password text-right">
