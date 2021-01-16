@@ -19,6 +19,31 @@ const getAllGroups = async (req, res, next) => {
     });
 };
 
+const getCreateGroupsByUid = async (req, res, next) => {
+    let userId = req.params.uid;
+
+    let userGroups;
+    try {
+        userGroups = await Group.find({ leader: userId });
+        console.log(userGroups);
+    } catch (error) {
+        const err = new HttpError(
+            "Fetching groups failed, please try again",
+            500
+        );
+        return next(err);
+    }
+    if (!userGroups) {
+        return next(
+            new HttpError("Could not find groups for provided user id", 404)
+        );
+    }
+
+    res.json({
+        groups: userGroups.map((group) => group.toObject({ getters: true })),
+    });
+};
+
 const createGroup = async (req, res, next) => {
     const { leader, shop, description } = req.body;
 
@@ -55,3 +80,4 @@ const createGroup = async (req, res, next) => {
 
 exports.getAllGroups = getAllGroups;
 exports.createGroup = createGroup;
+exports.getCreateGroupsByUid = getCreateGroupsByUid;
