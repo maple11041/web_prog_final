@@ -8,7 +8,6 @@ import {
     Button,
     Row,
     Col,
-    CardSubtitle,
     Modal,
     ModalHeader,
     ModalBody,
@@ -62,7 +61,7 @@ const Shops = ({ shops, name, token }) => {
             <div className="shop-container">
                 <h2>{shops.title}</h2>
                 <Row>{render}</Row>
-                <Modal isOpen={modal} toggle={toggle}>
+                <Modal isOpen={modal} toggle={() => toggle()}>
                     <ModalHeader>{selectedShop}</ModalHeader>
                     <ModalBody>
                         <div className="form-group">
