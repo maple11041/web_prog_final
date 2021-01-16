@@ -1,4 +1,4 @@
-import {React,useState} from "react";
+import { React, useState } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -7,12 +7,11 @@ import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
-import Join from "./components/JoinGroup";
+import JoinGroup from "./components/JoinGroup";
 
 function App() {
-
-    const [username,setUsername] = useState('Guest')
-    const [token,setToken] = useState('')
+    const [username, setUsername] = useState("Guest");
+    const [token, setToken] = useState("");
 
     const shopData = {
         title: "飲料店總覽",
@@ -33,7 +32,7 @@ function App() {
                 title: "茶湯會",
                 text: "飲料店",
                 img:
-                    "https://www.boncity.com/s/img/infos/51790_1.jpg?20191014082537",
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNRAK9qVnf0L2wrZgbI1N_Y-fObVwdxO9D3Q&usqp=CAU",
             },
         ],
     };
@@ -42,16 +41,44 @@ function App() {
             <div className="App">
                 <NavBar />
                 <Switch>
-                    <Route exact path="/" component={() => <Login setName = {setUsername} setToken = {setToken} />} />
-                    <Route path="/sign-in" component={() => <Login setName = {setUsername} setToken = {setToken} />} />
-                    <Route path="/sign-up" component={() => <SignUp setName = {setUsername} setToken = {setToken} />} />
+                    <Route
+                        exact
+                        path="/"
+                        component={() => (
+                            <Login setName={setUsername} setToken={setToken} />
+                        )}
+                    />
+                    <Route
+                        path="/sign-in"
+                        component={() => (
+                            <Login setName={setUsername} setToken={setToken} />
+                        )}
+                    />
+                    <Route
+                        path="/sign-up"
+                        component={() => (
+                            <SignUp setName={setUsername} setToken={setToken} />
+                        )}
+                    />
                     <Route
                         path="/shop"
-                        component={() => <Shops shops={shopData} name = {username} token = {token} />}
+                        component={() => (
+                            <Shops
+                                shops={shopData}
+                                name={username}
+                                token={token}
+                            />
+                        )}
                     />
                     <Route
                         path="/add"
-                        component={() => <Join shops={shopData} name = {username} token = {token} />}
+                        component={() => (
+                            <JoinGroup
+                                shops={shopData}
+                                name={username}
+                                token={token}
+                            />
+                        )}
                     />
                 </Switch>
             </div>

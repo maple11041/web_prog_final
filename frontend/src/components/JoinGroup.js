@@ -1,4 +1,4 @@
-import { React, useState ,useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import {
     Card,
     CardImg,
@@ -17,14 +17,13 @@ import {
 import "./Shop.css";
 import { CheckGroup } from "./axios/group";
 
-const Shops = ({ shops, name, token }) => {
+const JoinGroup = ({ shops, name, token }) => {
     // var shopName = "test";
-    
-    
+
     const [modal, setModal] = useState(false);
     const [selectedShop, setSelectedShop] = useState("");
     const [description, setDescription] = useState("");
-    const [outData,setData] = useState([])
+    const [outData, setData] = useState([]);
 
     const createRequest = () => {
         setModal(!modal);
@@ -33,7 +32,6 @@ const Shops = ({ shops, name, token }) => {
 
     const toggle = (shopName) => {
         // console.log(token);
-        
 
         if (token === "") alert("Please login first");
         else {
@@ -42,15 +40,15 @@ const Shops = ({ shops, name, token }) => {
         }
     };
     // console.log(shops.body);
-    const render = outData.map((item) =>{
-        const shop = item.shop
+    const render = outData.map((item) => {
+        const shop = item.shop;
         return (
             <Col xs="12" md="4" lg="3">
                 <Card>
                     <CardImg top width="30px" height="200px" src={shop.img} />
                     <CardBody>
-                        <CardTitle tag="h2">{shop.title}</CardTitle>
-                        <CardText>Description:{item.gp.description}</CardText>
+                        <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
+                        <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
                         <Button onClick={() => toggle(shop.title)}>
                             我要加團
@@ -59,43 +57,33 @@ const Shops = ({ shops, name, token }) => {
                 </Card>
             </Col>
         );
+    });
 
-    })
-    
-    
-    useEffect(()=>{
-        const Output = async() =>{
-            const group = await CheckGroup()
-            console.log( group);
-            var data = []
-            group.map((gp)=>{
-                console.log(gp.status)
-                if(gp.status==='OnGoing')
-                {
+    useEffect(() => {
+        const Output = async () => {
+            const group = await CheckGroup();
+            console.log(group);
+            var data = [];
+            group.map((gp) => {
+                console.log(gp.status);
+                if (gp.status === "OnGoing") {
                     shops.body.map((shop) => {
-                        console.log(shop.title)
-                        console.log(gp.shop)
-                        if(shop.title === gp.shop)
-                        {
-                            console.log('before',data)
-                            data = [...data,{gp,shop}]
-                            
+                        console.log(shop.title);
+                        console.log(gp.shop);
+                        if (shop.title === gp.shop) {
+                            console.log("before", data);
+                            data = [...data, { gp, shop }];
                         }
-                        
                     });
-
                 }
-                
-            })
-            setData(data)
-            
-        }
-        Output()
+            });
+            setData(data);
+        };
+        Output();
+    }, []);
 
-    },[])
-    
     console.log(outData);
-    
+
     return (
         <div className="shop-wrapper">
             <div className="shop-container">
@@ -126,7 +114,6 @@ const Shops = ({ shops, name, token }) => {
             </div>
         </div>
     );
-
 };
 
-export default Shops;
+export default JoinGroup;
