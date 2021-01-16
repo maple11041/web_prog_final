@@ -15,10 +15,25 @@ import {
     ModalFooter,
 } from "reactstrap";
 import "./Shop.css";
+import {CreateGroup} from './axios/group'
 
-const Shops = ({ shops }) => {
+const Shops = ({ shops,name,token }) => {
+    var shopName = 'test'
+
     const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
+
+    const createRequest = () => {
+        setModal(!modal)
+        CreateGroup(token,shopName)
+        
+    }
+
+    const toggle = () => {
+        if(token === '')
+            alert('Please login first')
+        else
+            setModal(!modal)
+    };
     // console.log(shops.body);
     const render = shops.body.map((shop) => {
         return (
@@ -58,7 +73,7 @@ const Shops = ({ shops }) => {
                         <Button color="secondary" onClick={toggle}>
                             取消
                         </Button>
-                        <Button color="primary">送出</Button>
+                        <Button color="primary" onClick = {createRequest}>送出</Button>
                     </ModalFooter>
                 </Modal>
             </div>

@@ -6,7 +6,7 @@ const CreateGroup = async (leader,shop) => {
   
 
   await instance.post( '/',{
-    leader:leader
+    leader:leader,
     shop:shop
   })
   .then(function (response) {
@@ -15,7 +15,7 @@ const CreateGroup = async (leader,shop) => {
   .catch(function (error) {
     console.log(error.response);
   });
-
+  return
   //return {token,err}
   /*
   console.log(e_mail,password)
