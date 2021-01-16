@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useState} from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -9,6 +9,10 @@ import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
 
 function App() {
+
+    const [username,setUsername] = useState('Guest')
+    const [token,setToken] = useState('')
+
     const shopData = {
         title: "飲料店總覽",
         body: [
@@ -37,12 +41,12 @@ function App() {
             <div className="App">
                 <NavBar />
                 <Switch>
-                    <Route exact path="/" component={Login} />
-                    <Route path="/sign-in" component={Login} />
-                    <Route path="/sign-up" component={SignUp} />
+                    <Route exact path="/" component={() => <Login setName = {setUsername} setToken = {setToken} />} />
+                    <Route path="/sign-in" component={() => <Login setName = {setUsername} setToken = {setToken} />} />
+                    <Route path="/sign-up" component={() => <SignUp setName = {setUsername} setToken = {setToken} />} />
                     <Route
                         path="/shop"
-                        component={() => <Shops shops={shopData} />}
+                        component={() => <Shops shops={shopData} name = {username} token = {token} />}
                     />
                 </Switch>
             </div>
