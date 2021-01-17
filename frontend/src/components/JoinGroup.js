@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import "./Shop.css";
 import { CheckGroup } from "./axios/group";
+import Menu from "./Menu";
 
 const JoinGroup = ({ shops, name, token }) => {
     // var shopName = "test";
@@ -24,6 +25,7 @@ const JoinGroup = ({ shops, name, token }) => {
     const [selectedShop, setSelectedShop] = useState("");
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
+    // const [selctedIdx, setSelectIdx] = useState(-1);
 
     const createRequest = () => {
         setModal(!modal);
@@ -31,16 +33,13 @@ const JoinGroup = ({ shops, name, token }) => {
     };
 
     const toggle = (shopName) => {
-        // console.log(token);
-
-        if (token === "") alert("Please login first");
-        else {
-            setModal(!modal);
-            setSelectedShop(shopName);
-        }
+        // console.log(index);
+        setSelectedShop(shopName);
+        console.log(shopName);
+        // console.log(selctedIdx);
     };
     // console.log(shops.body);
-    const render = outData.map((item) => {
+    const render = outData.map((item, index) => {
         const shop = item.shop;
         return (
             <Col xs="12" md="4" lg="3">
@@ -50,9 +49,7 @@ const JoinGroup = ({ shops, name, token }) => {
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
-                        <Button onClick={() => toggle(shop.title)}>
-                            我要加團
-                        </Button>
+                        <Button onClick={() => toggle(shop.title)}>加入</Button>
                     </CardBody>
                 </Card>
             </Col>
@@ -82,37 +79,17 @@ const JoinGroup = ({ shops, name, token }) => {
         Output();
     }, []);
 
-    console.log(outData);
+    // console.log(selctedIdx);
 
-    return (
+    return !selectedShop ? (
         <div className="shop-wrapper">
             <div className="shop-container">
                 <h2>{shops.title}</h2>
                 <Row>{render}</Row>
-                <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader>{selectedShop}</ModalHeader>
-                    <ModalBody>
-                        <div className="form-group">
-                            <label>想說的話</label>
-                            <input
-                                type="email"
-                                className="form-control"
-                                placeholder="請輸入文字..."
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </div>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="secondary" onClick={() => toggle()}>
-                            取消
-                        </Button>
-                        <Button color="primary" onClick={createRequest}>
-                            送出
-                        </Button>
-                    </ModalFooter>
-                </Modal>
             </div>
         </div>
+    ) : (
+        <Menu selectedShop={selectedShop} />
     );
 };
 

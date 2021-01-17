@@ -9,8 +9,11 @@ import { shops } from "./shops.json";
 
 import "./Menu.css";
 
-export default function Menu() {
-    const [shopItem, setShopItem] = useState(shops[1]["items"]);
+export default function Menu({ selectedShop }) {
+    console.log(selectedShop);
+    const [shopItem, setShopItem] = useState(
+        shops.find((shop) => shop.Name === selectedShop).items
+    );
     const [orderItems, setOrderItems] = useState({});
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -31,14 +34,6 @@ export default function Menu() {
     return (
         <>
             <div className="menu">
-                <div className="extra-wrapper">
-                    <Extras
-                        type="Sides"
-                        items={shopItem}
-                        orderItems={orderItems}
-                        setOrderItems={setOrderItems}
-                    />
-                </div>
                 <div className="extra-wrapper">
                     <Extras
                         type="Sides"
