@@ -17,14 +17,7 @@ const CreateGroup = async (leader, shop, description) => {
             console.log(error.response);
         });
     return;
-    //return {token,err}
-    /*
-  console.log(e_mail,password)
-  const {
-    data: { token,userId,email }
-  } = await instance.post('/login',{params:{email:e_mail,password:password}})
-  console.log(token)
-  return token*/
+    
 };
 
 const CheckGroup = async () => {
@@ -42,13 +35,25 @@ const CheckGroup = async () => {
         });
 
     return groups;
-    /*
-  const {
-    data: { token,message }
-  } = await instance.post('/signup',{params:{name,password,email}})
-
-  return {token,message}
-  */
+    
 };
 
-export { CreateGroup, CheckGroup };
+const CheckMyGroup = async (id) => {
+    var groups;
+    const url = "/users/" + id
+    await instance
+        .get(url)
+        .then(function (response) {
+            console.log(response);
+            console.log(response.data);
+            groups = response.data.groups;
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
+
+    return groups;
+    
+};
+
+export { CreateGroup, CheckGroup, CheckMyGroup };
