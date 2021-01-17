@@ -20,7 +20,7 @@ export default function Menu({ selectedShop }) {
     // console.log(shopItem);
     // console.log(shops[0]["items"]);
     useEffect(() => {
-        // console.log(orderItems);
+        console.log(orderItems);
         const total = Object.keys(orderItems).reduce((acc, curr) => {
             const [index, type] = curr.split("-");
             const price =

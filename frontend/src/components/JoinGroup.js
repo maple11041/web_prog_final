@@ -35,7 +35,7 @@ const JoinGroup = ({ shops, name, token }) => {
     const toggle = (shopName) => {
         // console.log(index);
         setSelectedShop(shopName);
-        console.log(shopName);
+        // console.log(shopName);
         // console.log(selctedIdx);
     };
     // console.log(shops.body);
