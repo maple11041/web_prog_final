@@ -11,7 +11,8 @@ import SignUp from "./components/signup.component";
 import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
 import JoinGroup from "./components/JoinGroup";
-import Sidebar from "./components/SIdebar";
+import Sidebar from "./components/Sidebar";
+import MyGroup from "./components/MyGroup";
 
 function App() {
     const [username, setUsername] = useState("Guest");
@@ -44,7 +45,7 @@ function App() {
         <Router>
             <Sidebar />
             <div className="App">
-                <NavBar />
+                <NavBar token={token} />
                 <Switch>
                     <Route
                         exact
@@ -79,6 +80,16 @@ function App() {
                         path="/add"
                         component={() => (
                             <JoinGroup
+                                shops={shopData}
+                                name={username}
+                                token={token}
+                            />
+                        )}
+                    />
+                    <Route
+                        path="/my"
+                        component={() => (
+                            <MyGroup
                                 shops={shopData}
                                 name={username}
                                 token={token}
