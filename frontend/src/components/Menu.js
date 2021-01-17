@@ -10,7 +10,7 @@ import { shops } from "./shops.json";
 import "./Menu.css";
 
 export default function Menu() {
-    const [shopItem, setShopItem] = useState(shops[0]["items"]);
+    const [shopItem, setShopItem] = useState(shops[1]["items"]);
     const [orderItems, setOrderItems] = useState({});
     const [totalPrice, setTotalPrice] = useState(0);
 

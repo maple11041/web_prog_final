@@ -13,6 +13,7 @@ import Shops from "./components/Shops";
 import JoinGroup from "./components/JoinGroup";
 import Sidebar from "./components/Sidebar";
 import MyGroup from "./components/MyGroup";
+// import Orders from "./components/Orders";
 import Menu from "./components/Menu";
 
 function App() {
