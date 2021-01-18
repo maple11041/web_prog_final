@@ -97,7 +97,33 @@ const getOrderByUid = async (req, res, next) => {
     });
 };
 
+const updateOrderPayed = async (req, res, next) => {
+    const { payed } = req.body;
+
+    const orderId = req.params.oid;
+
+    let order;
+    try {
+        order = await Order.findById(orderId);
+    } catch (err) {
+        return next(
+            new HttpError("Something went wrong, could not update order", 500)
+        );
+    }
+
+    order.payed = payed;
+
+    try {
+        await order.save();
+    } catch (error) {
+        return next(
+            new HttpError("Something went wrong, could not update order", 500)
+        );
+    }
+    res.status(200).json(order);
+};
 
 exports.createOrder = createOrder;
 exports.getOrderByGroupId = getOrderByGroupId;
 exports.getOrderByUid = getOrderByUid;
+exports.updateOrderPayed = updateOrderPayed;

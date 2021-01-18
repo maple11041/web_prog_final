@@ -8,5 +8,6 @@ const router = express.Router();
 router.post("/", ordersController.createOrder);
 router.get("/:gid", ordersController.getOrderByGroupId);
 router.get("/user/:uid", ordersController.getOrderByUid);
+router.patch("/:oid", ordersController.updateOrderPayed);
 
 module.exports = router;
