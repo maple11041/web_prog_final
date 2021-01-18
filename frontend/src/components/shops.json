@@ -1,0 +1,129 @@
+{
+    "shops": [
+        {
+            "Name": "50嵐",
+            "items": [
+                {
+                    "name": "茉莉綠茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "阿薩姆紅茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "四季春青茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "黃金烏龍",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "奶茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "奶綠",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "紅茶瑪奇朵",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "黃金烏龍",
+                    "price_M": 25,
+                    "price_L": 30
+                }
+            ]
+        },
+        {
+            "Name": "可不可",
+            "items": [
+                {
+                    "name": "熟成紅茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "麗春紅茶",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "太妃紅茶",
+                    "price_M": 30,
+                    "price_L": 35
+                },
+                {
+                    "name": "胭脂紅茶",
+                    "price_M": 35,
+                    "price_L": 40
+                },
+                {
+                    "name": "雪藏紅茶",
+                    "price_M": 45,
+                    "price_L": 55
+                },
+                {
+                    "name": "熟成冷露",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "紅茶瑪奇朵",
+                    "price_M": 25,
+                    "price_L": 30
+                },
+                {
+                    "name": "黃金烏龍",
+                    "price_M": 25,
+                    "price_L": 30
+                }
+            ]
+        },
+        {
+            "Name": "迷客夏",
+            "items": [
+                {
+                    "name": "珍珠伯爵紅茶拿鐵",
+                    "price_M": 55,
+                    "price_L": 65
+                },
+                {
+                    "name": "珍珠大正紅茶拿鐵",
+                    "price_M": 55,
+                    "price_L": 65
+                },
+                {
+                    "name": "伯爵紅茶拿鐵",
+                    "price_M": 45,
+                    "price_L": 55
+                },
+                {
+                    "name": "大正紅茶拿鐵",
+                    "price_M": 45,
+                    "price_L": 55
+                },
+                {
+                    "name": "茉香綠茶拿鐵",
+                    "price_M": 45,
+                    "price_L": 55
+                },
+                {
+                    "name": "高峰烏龍拿鐵",
+                    "price_M": 45,
+                    "price_L": 55
+                }
+            ]
+        }
+    ]
+}

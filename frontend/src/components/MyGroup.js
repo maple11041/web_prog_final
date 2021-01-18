@@ -61,17 +61,17 @@ const MyGroup = ({ shops, name, token }) => {
 
     useEffect(() => {
         const Output = async () => {
-            const group = await CheckMyGroup(name);//tochange:暫時用name之後要改成id
-            console.log(group);
+            const group = await CheckMyGroup(name); //tochange:暫時用name之後要改成id
+            // console.log(group);
             var data = [];
             group.map((gp) => {
-                console.log(gp.status);
+                // console.log(gp.status);
                 if (gp.status === "OnGoing") {
                     shops.body.map((shop) => {
-                        console.log(shop.title);
-                        console.log(gp.shop);
+                        // console.log(shop.title);
+                        // console.log(gp.shop);
                         if (shop.title === gp.shop) {
-                            console.log("before", data);
+                            // console.log("before", data);
                             data = [...data, { gp, shop }];
                         }
                     });
@@ -82,7 +82,7 @@ const MyGroup = ({ shops, name, token }) => {
         Output();
     }, []);
 
-    console.log(outData);
+    // console.log(outData);
 
     return (
         <div className="shop-wrapper">
