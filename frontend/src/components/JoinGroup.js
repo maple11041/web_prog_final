@@ -18,13 +18,14 @@ import "./Shop.css";
 import { CheckGroup } from "./axios/group";
 import Menu from "./Menu";
 
-const JoinGroup = ({ shops, name, token }) => {
+const JoinGroup = ({ shops, name, token ,userId}) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
     const [selectedShop, setSelectedShop] = useState("");
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
+    const [gpId,setgpId] = useState('')
     // const [selctedIdx, setSelectIdx] = useState(-1);
 
     const createRequest = () => {
@@ -32,15 +33,17 @@ const JoinGroup = ({ shops, name, token }) => {
         //CreateGroup(name, selectedShop, description);
     };
 
-    const toggle = (shopName) => {
+    const toggle = (shopName,groupId) => {
         // console.log(index);
         setSelectedShop(shopName);
+        setgpId(groupId)
         // console.log(shopName);
         // console.log(selctedIdx);
     };
     // console.log(shops.body);
     const render = outData.map((item, index) => {
         const shop = item.shop;
+        console.log(item,'over')
         return (
             <Col xs="12" md="4" lg="3">
                 <Card>
@@ -49,7 +52,7 @@ const JoinGroup = ({ shops, name, token }) => {
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
-                        <Button onClick={() => toggle(shop.title)}>加入</Button>
+                        <Button onClick={() => toggle(shop.title,item.gp.id)}>加入</Button>
                     </CardBody>
                 </Card>
             </Col>
@@ -89,7 +92,7 @@ const JoinGroup = ({ shops, name, token }) => {
             </div>
         </div>
     ) : (
-        <Menu selectedShop={selectedShop} />
+        <Menu selectedShop={selectedShop} groupId = {gpId} userId = {userId} />
     );
 };
 

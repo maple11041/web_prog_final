@@ -110,6 +110,7 @@ function App() {
                                 shops={shopData}
                                 name={username}
                                 token={token}
+                                userId={userId}
                             />
                         )}
                     />
