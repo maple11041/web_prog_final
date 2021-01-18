@@ -72,5 +72,32 @@ const getOrderByGroupId = async (req, res, next) => {
     });
 };
 
+const getOrderByUid = async (req, res, next) => {
+    let userId = req.params.uid;
+
+    let userOrders;
+    try {
+        userOrders = await Order.find({ creator: userId });
+        console.log(userOrders);
+    } catch (error) {
+        const err = new HttpError(
+            "Fetching groups failed, please try again",
+            500
+        );
+        return next(err);
+    }
+    if (!userOrders) {
+        return next(
+            new HttpError("Could not find orders for provided user id", 404)
+        );
+    }
+
+    res.json({
+        orders: userOrders,
+    });
+};
+
+
 exports.createOrder = createOrder;
 exports.getOrderByGroupId = getOrderByGroupId;
+exports.getOrderByUid = getOrderByUid;

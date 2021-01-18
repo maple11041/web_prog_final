@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/", ordersController.createOrder);
 router.get("/:gid", ordersController.getOrderByGroupId);
+router.get("/user/:uid", ordersController.getOrderByUid);
 
-module.exports = router;
 module.exports = router;
