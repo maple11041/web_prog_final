@@ -19,6 +19,7 @@ import Menu from "./components/Menu";
 function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
+    const [userId, setId] = useState("");
 
     const shopData = {
         title: "飲料店總覽",
@@ -53,19 +54,31 @@ function App() {
                         exact
                         path="/"
                         component={() => (
-                            <Login setName={setUsername} setToken={setToken} />
+                            <Login
+                                setName={setUsername}
+                                setToken={setToken}
+                                setId={setId}
+                            />
                         )}
                     />
                     <Route
                         path="/sign-in"
                         component={() => (
-                            <Login setName={setUsername} setToken={setToken} />
+                            <Login
+                                setName={setUsername}
+                                setToken={setToken}
+                                setId={setId}
+                            />
                         )}
                     />
                     <Route
                         path="/sign-up"
                         component={() => (
-                            <SignUp setName={setUsername} setToken={setToken} />
+                            <SignUp
+                                setName={setUsername}
+                                setToken={setToken}
+                                setId={setId}
+                            />
                         )}
                     />
                     <Route
@@ -75,6 +88,7 @@ function App() {
                                 shops={shopData}
                                 name={username}
                                 token={token}
+                                userId={userId}
                             />
                         )}
                     />
@@ -85,6 +99,7 @@ function App() {
                                 shops={shopData}
                                 name={username}
                                 token={token}
+                                userId={userId}
                             />
                         )}
                     />

@@ -16,7 +16,7 @@ import {
 import "./Shop.css";
 import { CreateGroup } from "./axios/group";
 
-const Shops = ({ shops, name, token }) => {
+const Shops = ({ shops, name, token,userId }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
@@ -25,7 +25,7 @@ const Shops = ({ shops, name, token }) => {
 
     const createRequest = () => {
         setModal(!modal);
-        CreateGroup(name, selectedShop, description);
+        CreateGroup(userId, selectedShop, description);
     };
 
     const toggle = (shopName) => {
