@@ -13,7 +13,7 @@ import Shops from "./components/Shops";
 import JoinGroup from "./components/JoinGroup";
 import Sidebar from "./components/Sidebar";
 import MyGroup from "./components/MyGroup";
-// import Orders from "./components/Orders";
+import Orders from "./components/Orders";
 import Menu from "./components/Menu";
 
 function App() {
@@ -113,7 +113,7 @@ function App() {
                             />
                         )}
                     />
-                    <Route path="/order" component={Menu} />
+                    <Route path="/order" component={Orders} />
                     <Route path="/menu" component={Menu} />
                 </Switch>
             </div>
