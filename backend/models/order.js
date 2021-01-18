@@ -12,7 +12,7 @@ const orderSchema = new Schema({
         },
     ],
     amount: { type: Number, required: true },
-    payed: { type: String, required: true },
+    payed: { type: Boolean, required: true },
     group: { type: mongoose.Schema.Types.ObjectId, ref: "Group" },
 });
 
