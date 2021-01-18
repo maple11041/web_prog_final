@@ -47,4 +47,30 @@ const createOrder = async (req, res, next) => {
     res.status(201).json({ order: createdOrder });
 };
 
+const getOrderByGroupId = async (req, res, next) => {
+    let groupId = req.params.gid;
+
+    let groupOrders;
+    try {
+        groupOrders = await Order.find({ group: groupId });
+        console.log(groupOrders);
+    } catch (error) {
+        const err = new HttpError(
+            "Fetching groups failed, please try again",
+            500
+        );
+        return next(err);
+    }
+    if (!groupOrders) {
+        return next(
+            new HttpError("Could not find orders for provided group id", 404)
+        );
+    }
+
+    res.json({
+        orders: groupOrders.map((order) => order.toObject({ getters: true })),
+    });
+};
+
 exports.createOrder = createOrder;
+exports.getOrderByGroupId = getOrderByGroupId;
