@@ -72,5 +72,58 @@ const getOrderByGroupId = async (req, res, next) => {
     });
 };
 
+const getOrderByUid = async (req, res, next) => {
+    let userId = req.params.uid;
+
+    let userOrders;
+    try {
+        userOrders = await Order.find({ creator: userId });
+        console.log(userOrders);
+    } catch (error) {
+        const err = new HttpError(
+            "Fetching groups failed, please try again",
+            500
+        );
+        return next(err);
+    }
+    if (!userOrders) {
+        return next(
+            new HttpError("Could not find orders for provided user id", 404)
+        );
+    }
+
+    res.json({
+        orders: userOrders,
+    });
+};
+
+const updateOrderPayed = async (req, res, next) => {
+    const { payed } = req.body;
+
+    const orderId = req.params.oid;
+
+    let order;
+    try {
+        order = await Order.findById(orderId);
+    } catch (err) {
+        return next(
+            new HttpError("Something went wrong, could not update order", 500)
+        );
+    }
+
+    order.payed = payed;
+
+    try {
+        await order.save();
+    } catch (error) {
+        return next(
+            new HttpError("Something went wrong, could not update order", 500)
+        );
+    }
+    res.status(200).json(order);
+};
+
 exports.createOrder = createOrder;
 exports.getOrderByGroupId = getOrderByGroupId;
+exports.getOrderByUid = getOrderByUid;
+exports.updateOrderPayed = updateOrderPayed;
