@@ -3,7 +3,7 @@ import axios from "axios";
 const instance = axios.create({ baseURL: "http://localhost:5000/api/orders" });
 
 const PlaceOrder = async (creator, orderItems, amount,groupId) => {
-    console.log(leader);
+    
     await instance
         .post("/", {
             creator:creator,

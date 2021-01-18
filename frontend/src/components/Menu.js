@@ -8,8 +8,9 @@ import { mains, sides, drinks } from "./data";
 import { shops } from "./shops.json";
 
 import "./Menu.css";
+import { PlaceOrder } from "./axios/order";
 
-export default function Menu({ selectedShop }) {
+export default function Menu({ selectedShop,groupId,userId }) {
     console.log(selectedShop);
     const [shopItem, setShopItem] = useState(
         shops.find((shop) => shop.Name === selectedShop).items
@@ -17,11 +18,39 @@ export default function Menu({ selectedShop }) {
     const [orderItems, setOrderItems] = useState({});
     const [totalPrice, setTotalPrice] = useState(0);
 
+    const SendOrder = (e) => {
+        e.preventDefault()
+        console.log(shopItem)
+        console.log(orderItems)
+        console.log(Object.keys(orderItems))
+        console.log(orderItems[1])
+        const orderForm = Object.keys(orderItems).map((item) => {
+            //console.log("hi")
+            const [index, type] = item.split("-");
+            //console.log(b)
+            //console.log(type)
+            console.log(orderItems[item])
+            //console.log(item)
+            //console.log(orderItems.item)
+            const key = shopItem[index].name + "-" +type 
+            console.log(key)
+            return {item:key, num: orderItems[item]}
+        })
+        console.log(orderForm)
+        //const newItem = orderForm.reduce((a, b) => Object.assign({}, a, b));
+        //console.log(newItem)
+        console.log(selectedShop)
+        console.log(groupId)
+        console.log(userId)
+        PlaceOrder(userId,orderForm,totalPrice,groupId)
+    }
+
     // console.log(shopItem);
     // console.log(shops[0]["items"]);
     useEffect(() => {
         console.log(orderItems);
         const total = Object.keys(orderItems).reduce((acc, curr) => {
+            console.log("here",curr)
             const [index, type] = curr.split("-");
             const price =
                 type === "M"
@@ -45,7 +74,7 @@ export default function Menu({ selectedShop }) {
                 <Total total={totalPrice} />
             </div>
             <div className="button-wrapper">
-                <Button>送出</Button>
+                <Button onClick = {SendOrder}>送出</Button>
             </div>
         </>
     );

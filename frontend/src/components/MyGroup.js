@@ -17,7 +17,7 @@ import {
 import "./Shop.css";
 import { CheckMyGroup } from "./axios/group";
 
-const MyGroup = ({ shops, name, token }) => {
+const MyGroup = ({ shops, name, token, userId }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
@@ -61,7 +61,7 @@ const MyGroup = ({ shops, name, token }) => {
 
     useEffect(() => {
         const Output = async () => {
-            const group = await CheckMyGroup(name); //tochange:暫時用name之後要改成id
+            const group = await CheckMyGroup(userId); 
             // console.log(group);
             var data = [];
             group.map((gp) => {
