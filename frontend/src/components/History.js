@@ -27,7 +27,7 @@ export default function CollapsibleTable({userId,setOrder}) {
     
     const history = useHistory();
     const routeChange = () =>{ 
-        let path = `order2`; 
+        let path = `myorder`; 
         history.push(path);
     }
     useEffect(() => {

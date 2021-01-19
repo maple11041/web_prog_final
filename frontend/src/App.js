@@ -18,6 +18,7 @@ import Menu from "./components/Menu";
 
 import Orders2 from "./components/Orders2";
 import History from "./components/History"
+import MyOrder from "./components/MyOrder"
 function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
@@ -135,6 +136,10 @@ function App() {
                     <Route
                         path="/order2"
                         component={() => <Orders2 order={order} />}
+                    />
+                    <Route
+                        path="/myorder"
+                        component={() => <MyOrder order={order} />}
                     />
                     <Route path="/menu" component={Menu} />
                 </Switch>
