@@ -53,4 +53,19 @@ const CheckMyGroup = async (id) => {
     return groups;
 };
 
-export { CreateGroup, CheckGroup, CheckMyGroup };
+const ChangeStatus = async (id,status) => {
+    const url = "/" + id
+    await instance
+        .patch(url, {
+            status : status
+        })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
+    return;
+}
+
+export { CreateGroup, CheckGroup, CheckMyGroup, ChangeStatus };

@@ -15,7 +15,7 @@ import {
     ModalFooter,
 } from "reactstrap";
 import "./Shop.css";
-import { CheckMyGroup } from "./axios/group";
+import { CheckMyGroup,ChangeStatus } from "./axios/group";
 import {SearchOrder} from "./axios/order"
 import { useHistory } from "react-router-dom";
 
@@ -48,8 +48,13 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
         setOrder(orders)
         routeChange()
 
-        
     };
+
+    const changestate = async (groupId) => {
+        await ChangeStatus(groupId,"closed")
+
+    }
+
     // console.log(shops.body);
     const render = outData.map((item) => {
         const shop = item.shop;
@@ -60,7 +65,7 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
                     <CardBody>
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
-                        <Button>查看菜單</Button>
+                        <Button onClick={() => changestate(item.gp.id)}>關團</Button>
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>
                             
                             
@@ -80,7 +85,8 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
             var data = [];
             group.map((gp) => {
                 // console.log(gp.status);
-                if (gp.status === "OnGoing") {
+                //if (gp.status === "OnGoing") {
+                if (true) {
                     shops.body.map((shop) => {
                         // console.log(shop.title);
                         // console.log(gp.shop);
