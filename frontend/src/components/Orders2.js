@@ -13,6 +13,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 import "./Order.css";
 
 const useRowStyles = makeStyles({
@@ -27,9 +31,6 @@ function createData(name, price, paid) {
   return {
     name,
     price,
-    paid,
-    item:['first','second'],
-    amount:[5,6],
     history: [
       { orderId: "2020-01-05", customerId: ["11091700","222a","999"], amount: [3,7,80 ],price:77,paid:true,canceled:false},
       { orderId: "2020-01-02", customerId: ["Anonymous"], amount:[ 1 ],price:99,paid:false,canceled:false}
@@ -54,20 +55,14 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.name}
-        </TableCell>
-        <TableCell>
-        {row.item.map((item)=>(<div>{item}
-        {console.log(item)}</div>))}
-        </TableCell>
-        <TableCell>
-        {row.amount.map((item)=>(<div>{item}
-        {console.log(item)}</div>))}
-        </TableCell>
-        <TableCell align="right">{row.price}</TableCell>
-        <TableCell align="right">{row.paid}</TableCell>
-      </TableRow>
+                <TableCell component="th" scope="row">
+                    {row.name}
+                </TableCell>
+                <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="center">
+                    <FormControlLabel control={<Switch />} label="payed" />
+                </TableCell>
+            </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
@@ -138,11 +133,10 @@ Row.propTypes = {
 };
 */
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0),
-  createData("Ice cream sandwich", 237, 9.0),
-  createData("Eclair", 262, 16.0),
-  createData("Cupcake", 305, 3.7),
-  createData("Gingerbread", 356, 16.0)
+    createData("Frozen yoghurt", 159),
+    createData("Ice cream sandwich", 4.3),
+    createData("Eclair", 262),
+    createData("Gingerbread", 356),
 ];
 
 export default function CollapsibleTable() {
@@ -154,11 +148,8 @@ export default function CollapsibleTable() {
           <TableRow>
             <TableCell />
             <TableCell>訂購人</TableCell>
-            <TableCell>商品</TableCell>
-            <TableCell>數量</TableCell>
             <TableCell align="right">總金額</TableCell>
-            <TableCell align="right">付款狀態</TableCell>            
-            <TableCell align="right"></TableCell>
+            <TableCell align="center">付款狀態</TableCell>   
           </TableRow>
         </TableHead>
         <TableBody>
