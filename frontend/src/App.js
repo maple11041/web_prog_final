@@ -117,13 +117,13 @@ function App() {
                             />
                         )}
                     />
-                    <Route path="/order" component={Orders} />
                     <Route path="/order2" component={() => (
                             <Orders2
                                 order={order}
                             />
                         )}
                     />
+
                     <Route path="/menu" component={Menu} />
                 </Switch>
             </div>

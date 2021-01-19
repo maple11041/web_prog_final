@@ -92,6 +92,7 @@ function Row(props) {
                       </TableCell>
                       <TableCell align = "right">
                       {historyRow.number.map((item)=>(<div>{item}</div>))}
+
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.price}
@@ -110,7 +111,9 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
+
     </>
+
   );
 }
 /*
@@ -172,6 +175,7 @@ export default function CollapsibleTable({order}) {
   
 
   const rows = FirstStep(order)
+
 
   return (
   <div className="table-wrapper">
