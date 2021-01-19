@@ -81,8 +81,8 @@ const getOrderByUid = async (req, res, next) => {
     let userOrders;
     try {
         userOrders = await Order.find({ creator: userId }).populate({
-            path: "creator",
-            select: "name",
+            path: "group",
+            populate: { path: "leader", model: "User", select: "name" },
         });
         console.log(userOrders);
     } catch (error) {

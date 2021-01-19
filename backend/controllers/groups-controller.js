@@ -6,7 +6,10 @@ const { body } = require("express-validator");
 const getAllGroups = async (req, res, next) => {
     let groups;
     try {
-        groups = await Group.find();
+        groups = await Group.find().populate({
+            path: "leader",
+            select: "name",
+        });
     } catch (err) {
         const error = new HttpError(
             "Fetching groups failed, please try again later.",
@@ -24,7 +27,10 @@ const getCreateGroupsByUid = async (req, res, next) => {
 
     let userGroups;
     try {
-        userGroups = await Group.find({ leader: userId });
+        userGroups = await Group.find({ leader: userId }).populate({
+            path: "leader",
+            select: "name",
+        });
         console.log(userGroups);
     } catch (error) {
         const err = new HttpError(
