@@ -8,4 +8,6 @@ router.get("/users/:uid", groupsController.getCreateGroupsByUid);
 
 router.post("/", groupsController.createGroup);
 
+router.patch("/:gid", groupsController.updateOrderStatus);
+
 module.exports = router;

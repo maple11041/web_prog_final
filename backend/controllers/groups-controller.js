@@ -78,6 +78,37 @@ const createGroup = async (req, res, next) => {
     res.status(201).json({ group: newGroup });
 };
 
+const updateOrderStatus = async (req, res, next) => {
+    const { status } = req.body;
+
+    console.log(status);
+
+    const groupId = req.params.gid;
+
+    let group;
+    try {
+        group = await Group.findById(groupId);
+    } catch (err) {
+        // console.log(err);
+        return next(
+            new HttpError("Something went wrong, could not update group", 500)
+        );
+    }
+    console.log(group);
+
+    group.status = status;
+
+    try {
+        await group.save();
+    } catch (error) {
+        return next(
+            new HttpError("Something went wrong, could not update order", 500)
+        );
+    }
+    res.status(200).json(group);
+};
+
 exports.getAllGroups = getAllGroups;
 exports.createGroup = createGroup;
 exports.getCreateGroupsByUid = getCreateGroupsByUid;
+exports.updateOrderStatus = updateOrderStatus;
