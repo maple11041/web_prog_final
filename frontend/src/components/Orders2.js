@@ -19,11 +19,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import "./Order.css";
 
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-
-import "./Order.css";
-
 const useRowStyles = makeStyles({
     root: {
         "& > *": {
