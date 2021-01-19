@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-    creator: { type: String, required: true },
+    creator: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     orderItems: [
         {
             item: { type: String, required: true },
