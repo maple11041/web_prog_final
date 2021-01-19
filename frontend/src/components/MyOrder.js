@@ -191,7 +191,7 @@ export default function CollapsibleTable({ order }) {
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell>訂購人</TableCell>
+                            <TableCell>訂購商店</TableCell>
                             <TableCell align="right">總金額</TableCell>
                             <TableCell align="center">付款狀態</TableCell>
                         </TableRow>

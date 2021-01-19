@@ -161,7 +161,7 @@ function FirstStep(orders) {
         var number = [];
         var same = false;
         const orderId = e._id;
-        const userId = e.creator;
+        const userId = e.creator.name;
         e.orderItems.map((f) => {
             item = [...item, f.item];
             number = [...number, f.num];
@@ -204,7 +204,7 @@ function CreateNew(orderId, name, item, number, paid, price) {
 
 export default function CollapsibleTable({ order }) {
     const rows = FirstStep(order);
-
+    //const rows = []
     return (
         <div className="table-wrapper">
             <TableContainer component={Paper} style={{ width: "80%" }}>
