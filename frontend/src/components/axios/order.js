@@ -64,8 +64,8 @@ const changePaidStatus = async (id, status) => {
     await instance
         .patch(url, { payed: status })
         .then(function (response) {
-            console.log(response);
-            console.log(response.data);
+            // console.log(response);
+            // console.log(response.data);
             order = response.data;
         })
         .catch(function (error) {
