@@ -39,9 +39,26 @@ const SearchOrder = async (id) => {
             console.log(error.response);
         });
 
-    return order;
-    
-    
+    return order;    
 };
 
-export { PlaceOrder,SearchOrder };
+const SearchWhatIBought = async(id) => {
+    const url = "/user/" + id
+    
+    var order;
+    
+    await instance
+        .get(url)
+        .then(function (response) {
+            console.log(response);
+            console.log(response.data.orders);
+            order = response.data.orders;
+        })
+        .catch(function (error) {
+            console.log(error.response);
+        });
+
+    return order;  
+}
+
+export { PlaceOrder,SearchOrder,SearchWhatIBought };

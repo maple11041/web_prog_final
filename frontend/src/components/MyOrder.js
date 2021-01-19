@@ -73,7 +73,7 @@ function Row(props) {
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>訂單編號</TableCell>
+                                        <TableCell>團號</TableCell>
                                         <TableCell>商品</TableCell>
                                         <TableCell align="right">
                                             數量
@@ -205,8 +205,11 @@ export default function CollapsibleTable({ order }) {
                         <TableRow>
                             <TableCell />
                             <TableCell>訂購人</TableCell>
+                            <TableCell>商品</TableCell>
+                            <TableCell>數量</TableCell>
                             <TableCell align="right">總金額</TableCell>
-                            <TableCell align="center">付款狀態</TableCell>
+                            <TableCell align="right">付款狀態</TableCell>
+                            <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
