@@ -183,7 +183,7 @@ function CreateNew(orderId, name, item, number, paid, price) {
 
 export default function CollapsibleTable({ order }) {
     const rows = FirstStep(order);
-
+    //const rows = []
     return (
         <div className="table-wrapper">
             <TableContainer component={Paper} style={{ width: "80%" }}>
@@ -191,7 +191,7 @@ export default function CollapsibleTable({ order }) {
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell>訂購商店</TableCell>
+                            <TableCell>開團人</TableCell>
                             <TableCell align="right">總金額</TableCell>
                             <TableCell align="center">付款狀態</TableCell>
                         </TableRow>
