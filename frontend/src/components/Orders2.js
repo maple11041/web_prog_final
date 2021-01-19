@@ -13,6 +13,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+
 import "./Order.css";
 
 import Switch from "@material-ui/core/Switch";
@@ -32,9 +36,6 @@ function createData(name, price, paid) {
     return {
         name,
         price,
-        paid,
-        item: ["first", "second"],
-        amount: [5, 6],
         history: [
             {
                 orderId: "2020-01-05",
