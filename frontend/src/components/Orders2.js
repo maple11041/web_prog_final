@@ -1,4 +1,4 @@
-import React from "react";
+import {React,useEffect,useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Collapse from "@material-ui/core/Collapse";
@@ -40,11 +40,11 @@ function createData(name, price, paid) {
 
 function Row(props) {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const classes = useRowStyles();
 
   return (
-    <React.Fragment>
+    <>
       <TableRow className={classes.root}>
         <TableCell>
           <IconButton
@@ -88,12 +88,10 @@ function Row(props) {
                         {historyRow.orderId}
                       </TableCell>
                       <TableCell>
-                      {historyRow.customerId.map((item)=>(<div>{item}
-                      {console.log(item)}</div>))}
+                      {historyRow.item.map((item)=>(<div>{item}</div>))}
                       </TableCell>
                       <TableCell align = "right">
-                      {historyRow.amount.map((item)=>(<div>{item}
-                      {console.log(item)}</div>))}
+                      {historyRow.number.map((item)=>(<div>{item}</div>))}
                       </TableCell>
                       <TableCell align="right">
                         {historyRow.price}
@@ -112,7 +110,7 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
 /*
@@ -132,14 +130,49 @@ Row.propTypes = {
   }).isRequired
 };
 */
-const rows = [
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 4.3),
-    createData("Eclair", 262),
-    createData("Gingerbread", 356),
-];
+function FirstStep(orders)
+{
+  var rows = []
+  console.log(orders)
+  orders.map((e) => {
+    console.log(e)
+    var item=[]
+    var number=[]
+    const orderId = e.id
+    const userId = e.creator
+    e.orderItems.map((f)=>{
+      item = [...item,f.item]
+      number = [...number,f.num]
+    })
+    const paid = e.payed
+    const price = e.amount
+    console.log(orderId,userId,item,number,paid,price)
+    rows = [...rows,CreateNew(orderId,userId,item,number,paid,price)]
+    console.log(rows)
 
-export default function CollapsibleTable() {
+  })
+  console.log(rows)
+  return rows
+}
+
+function CreateNew(orderId,name,item,number,paid,price)
+{
+  return{
+    name,
+    price,
+    paid,
+    history: [
+      { orderId, item , number,price}
+    ]
+  }
+}
+
+export default function CollapsibleTable({order}) {
+  
+  
+
+  const rows = FirstStep(order)
+
   return (
   <div className="table-wrapper">
     <TableContainer component={Paper} style={{ width: "80%" }}>
