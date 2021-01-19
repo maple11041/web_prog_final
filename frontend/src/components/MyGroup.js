@@ -17,8 +17,9 @@ import {
 import "./Shop.css";
 import { CheckMyGroup } from "./axios/group";
 import {SearchOrder} from "./axios/order"
+import { useHistory } from "react-router-dom";
 
-const MyGroup = ({ shops, name, token, userId }) => {
+const MyGroup = ({ shops, name, token, userId,setOrder }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
@@ -26,7 +27,12 @@ const MyGroup = ({ shops, name, token, userId }) => {
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
 
+    const history = useHistory();
 
+    const routeChange = () =>{ 
+        let path = `order2`; 
+        history.push(path);
+    }
 
     const createRequest = () => {
         setModal(!modal);
@@ -39,6 +45,9 @@ const MyGroup = ({ shops, name, token, userId }) => {
         setSelectedShop(shopName);
         const orders = await SearchOrder(groupId)
         console.log(orders)
+        setOrder(orders)
+        routeChange()
+
         
     };
     // console.log(shops.body);
@@ -53,7 +62,10 @@ const MyGroup = ({ shops, name, token, userId }) => {
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>
+                            
+                            
                             查看現況
+                            
                         </Button>
                     </CardBody>
                 </Card>
