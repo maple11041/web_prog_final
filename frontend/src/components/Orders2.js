@@ -32,31 +32,6 @@ const useRowStyles = makeStyles({
     },
 });
 
-function createData(name, price, paid) {
-    return {
-        name,
-        price,
-        history: [
-            {
-                orderId: "2020-01-05",
-                customerId: ["11091700", "222a", "999"],
-                amount: [3, 7, 80],
-                price: 77,
-                paid: true,
-                canceled: false,
-            },
-            {
-                orderId: "2020-01-02",
-                customerId: ["Anonymous"],
-                amount: [1],
-                price: 99,
-                paid: false,
-                canceled: false,
-            },
-        ],
-    };
-}
-
 function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false);
@@ -182,6 +157,7 @@ function FirstStep(orders) {
         console.log(e);
         var item = [];
         var number = [];
+        var same = false;
         const orderId = e.id;
         const userId = e.creator;
         e.orderItems.map((f) => {
@@ -191,7 +167,23 @@ function FirstStep(orders) {
         const paid = e.payed;
         const price = e.amount;
         console.log(orderId, userId, item, number, paid, price);
-        rows = [...rows, CreateNew(orderId, userId, item, number, paid, price)];
+        for (var i = 0; i < rows.length; i++) {
+            if (rows[i].name === userId) {
+                rows[i].history = [
+                    { orderId, item, number, price },
+                    ...rows[i].history,
+                ];
+                rows[i].price = rows[i].price + price;
+                same = true;
+                break;
+            }
+        }
+        if (!same) {
+            rows = [
+                ...rows,
+                CreateNew(orderId, userId, item, number, paid, price),
+            ];
+        }
         console.log(rows);
     });
     console.log(rows);
