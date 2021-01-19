@@ -16,8 +16,10 @@ import {
 } from "reactstrap";
 import "./Shop.css";
 import { CheckMyGroup } from "./axios/group";
+import {SearchOrder} from "./axios/order"
+import { useHistory } from "react-router-dom";
 
-const MyGroup = ({ shops, name, token, userId }) => {
+const MyGroup = ({ shops, name, token, userId,setOrder }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
@@ -25,19 +27,28 @@ const MyGroup = ({ shops, name, token, userId }) => {
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
 
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+        let path = `order2`; 
+        history.push(path);
+    }
+
     const createRequest = () => {
         setModal(!modal);
         //CreateGroup(name, selectedShop, description);
     };
 
-    const toggle = (shopName) => {
+    const toggle = async (shopName,groupId) => {
         // console.log(token);
 
-        if (token === "") alert("Please login first");
-        else {
-            setModal(!modal);
-            setSelectedShop(shopName);
-        }
+        setSelectedShop(shopName);
+        const orders = await SearchOrder(groupId)
+        console.log(orders)
+        setOrder(orders)
+        routeChange()
+
+        
     };
     // console.log(shops.body);
     const render = outData.map((item) => {
@@ -50,8 +61,11 @@ const MyGroup = ({ shops, name, token, userId }) => {
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
-                        <Button onClick={() => toggle(shop.title)}>
+                        <Button onClick={() => toggle(shop.title,item.gp.id)}>
+                            
+                            
                             查看現況
+                            
                         </Button>
                     </CardBody>
                 </Card>
