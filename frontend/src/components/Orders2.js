@@ -153,7 +153,7 @@ function FirstStep(orders) {
         var item = [];
         var number = [];
         var same = false;
-        const orderId = e.id;
+        const orderId = e._id;
         const userId = e.creator;
         e.orderItems.map((f) => {
             item = [...item, f.item];

@@ -17,6 +17,7 @@ import Orders from "./components/Orders";
 import Menu from "./components/Menu";
 
 import Orders2 from "./components/Orders2";
+import History from "./components/History"
 function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
@@ -117,6 +118,19 @@ function App() {
                             />
                         )}
                     />
+                    <Route
+                        path="/hist"
+                        component={() => (
+                            <History
+                                shops={shopData}
+                                name={username}
+                                token={token}
+                                userId={userId}
+                                setOrder={setOrder}
+                            />
+                        )}
+                    />
+                    
                     <Route path="/order" component={Orders} />
                     <Route
                         path="/order2"

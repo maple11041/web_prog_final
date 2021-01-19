@@ -28,6 +28,11 @@ const NavBar = ({token}) => {
                         我開的團
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to={"/hist"}>
+                        我的訂單
+                    </Link>
+                </li>
                 
                 </>
             )
