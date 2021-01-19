@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import "./Shop.css";
 import { CheckMyGroup } from "./axios/group";
+import {SearchOrder} from "./axios/order"
 
 const MyGroup = ({ shops, name, token, userId }) => {
     // var shopName = "test";
@@ -25,19 +26,20 @@ const MyGroup = ({ shops, name, token, userId }) => {
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
 
+
+
     const createRequest = () => {
         setModal(!modal);
         //CreateGroup(name, selectedShop, description);
     };
 
-    const toggle = (shopName) => {
+    const toggle = async (shopName,groupId) => {
         // console.log(token);
 
-        if (token === "") alert("Please login first");
-        else {
-            setModal(!modal);
-            setSelectedShop(shopName);
-        }
+        setSelectedShop(shopName);
+        const orders = await SearchOrder(groupId)
+        console.log(orders)
+        
     };
     // console.log(shops.body);
     const render = outData.map((item) => {
@@ -50,7 +52,7 @@ const MyGroup = ({ shops, name, token, userId }) => {
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
-                        <Button onClick={() => toggle(shop.title)}>
+                        <Button onClick={() => toggle(shop.title,item.gp.id)}>
                             查看現況
                         </Button>
                     </CardBody>
