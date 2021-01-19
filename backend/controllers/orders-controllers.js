@@ -52,7 +52,10 @@ const getOrderByGroupId = async (req, res, next) => {
 
     let groupOrders;
     try {
-        groupOrders = await Order.find({ group: groupId });
+        groupOrders = await Order.find({ group: groupId }).populate({
+            path: "creator",
+            select: "name",
+        });
         console.log(groupOrders);
     } catch (error) {
         const err = new HttpError(
