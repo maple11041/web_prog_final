@@ -85,7 +85,8 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
             var data = [];
             group.map((gp) => {
                 // console.log(gp.status);
-                if (gp.status === "OnGoing") {
+                //if (gp.status === "OnGoing") {
+                if (true) {
                     shops.body.map((shop) => {
                         // console.log(shop.title);
                         // console.log(gp.shop);
