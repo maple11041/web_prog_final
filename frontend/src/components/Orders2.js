@@ -13,9 +13,12 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { withStyles } from "@material-ui/core/styles";
 
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { green } from "@material-ui/core/colors";
+import Checkbox from "@material-ui/core/Checkbox";
 
 import "./Order.css";
 
@@ -31,6 +34,10 @@ function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false);
     const classes = useRowStyles();
+    const [state, setState] = useState({
+        checkedB: row.paid,
+    });
+    // console.log(row);
 
     return (
         <>
@@ -53,7 +60,21 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="center">
-                    <FormControlLabel control={<Switch />} label="payed" />
+                    <FormControlLabel
+                        control={
+                            <Checkbox
+                                name="checkedB"
+                                color="primary"
+                                checked={state.checkedB}
+                                onClick={(e) => {
+                                    setState({
+                                        ...state,
+                                        [e.target.name]: e.target.checked,
+                                    });
+                                }}
+                            />
+                        }
+                    />
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -73,29 +94,18 @@ function Row(props) {
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>訂單編號</TableCell>
-                                        <TableCell>商品</TableCell>
+                                        <TableCell>品項</TableCell>
                                         <TableCell align="right">
                                             數量
                                         </TableCell>
                                         <TableCell align="right">
-                                            總價
+                                            總金額
                                         </TableCell>
-                                        <TableCell align="center">
-                                            付款狀態
-                                        </TableCell>
-                                        <TableCell>取消訂單</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {row.history.map((historyRow) => (
                                         <TableRow key={historyRow.orderId}>
-                                            <TableCell
-                                                component="th"
-                                                scope="row"
-                                            >
-                                                {historyRow.orderId}
-                                            </TableCell>
                                             <TableCell>
                                                 {historyRow.item.map((item) => (
                                                     <div>{item}</div>
@@ -110,12 +120,6 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">
                                                 {historyRow.price}
-                                            </TableCell>
-                                            <TableCell align="center">
-                                                {<input type="checkbox" />}
-                                            </TableCell>
-                                            <TableCell align="right">
-                                                {<input type="checkbox" />}
                                             </TableCell>
                                         </TableRow>
                                     ))}

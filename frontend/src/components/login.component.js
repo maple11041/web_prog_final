@@ -1,7 +1,7 @@
 import React, { Component, useState, onClick } from "react";
 import { LoginSubmit } from "./axios/user";
 
-export default function Login({ setName, setToken,setId }) {
+export default function Login({ setName, setToken, setId }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -26,7 +26,7 @@ export default function Login({ setName, setToken,setId }) {
             //TODO Login後要幹嘛
             setName(back.name);
             setToken(back.token);
-            setId(back.userId)
+            setId(back.userId);
         }
     };
 
@@ -44,6 +44,7 @@ export default function Login({ setName, setToken,setId }) {
                             type="email"
                             className="form-control"
                             placeholder="Enter email"
+                            style={{ textAlign: "left" }}
                         />
                     </div>
 
@@ -55,6 +56,7 @@ export default function Login({ setName, setToken,setId }) {
                             type="password"
                             className="form-control"
                             placeholder="Enter password"
+                            style={{ textAlign: "left" }}
                         />
                     </div>
 
