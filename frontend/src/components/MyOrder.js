@@ -14,8 +14,8 @@ import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import CheckIcon from "@material-ui/icons/Check";
+import ClearIcon from "@material-ui/icons/Clear";
 
 import "./Order.css";
 
@@ -53,7 +53,11 @@ function Row(props) {
                 </TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="center">
-                    <FormControlLabel control={<Switch />} label="payed" />
+                    {row.paid ? (
+                        <CheckIcon style={{ color: "green" }} />
+                    ) : (
+                        <ClearIcon style={{ color: "red" }} />
+                    )}
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -73,29 +77,18 @@ function Row(props) {
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>團號</TableCell>
-                                        <TableCell>商品</TableCell>
+                                        <TableCell>品項</TableCell>
                                         <TableCell align="right">
                                             數量
                                         </TableCell>
                                         <TableCell align="right">
-                                            總價
+                                            金額
                                         </TableCell>
-                                        <TableCell align="center">
-                                            付款狀態
-                                        </TableCell>
-                                        <TableCell>取消訂單</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {row.history.map((historyRow) => (
                                         <TableRow key={historyRow.orderId}>
-                                            <TableCell
-                                                component="th"
-                                                scope="row"
-                                            >
-                                                {historyRow.orderId}
-                                            </TableCell>
                                             <TableCell>
                                                 {historyRow.item.map((item) => (
                                                     <div>{item}</div>
@@ -110,12 +103,6 @@ function Row(props) {
                                             </TableCell>
                                             <TableCell align="right">
                                                 {historyRow.price}
-                                            </TableCell>
-                                            <TableCell align="center">
-                                                {<input type="checkbox" />}
-                                            </TableCell>
-                                            <TableCell align="right">
-                                                {<input type="checkbox" />}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -205,11 +192,8 @@ export default function CollapsibleTable({ order }) {
                         <TableRow>
                             <TableCell />
                             <TableCell>訂購人</TableCell>
-                            <TableCell>商品</TableCell>
-                            <TableCell>數量</TableCell>
                             <TableCell align="right">總金額</TableCell>
-                            <TableCell align="right">付款狀態</TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell align="center">付款狀態</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
