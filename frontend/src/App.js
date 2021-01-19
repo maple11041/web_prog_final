@@ -21,6 +21,7 @@ function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
     const [userId, setId] = useState("");
+    const [order, setOrder] = useState("123")
 
     const shopData = {
         title: "飲料店總覽",
@@ -112,11 +113,17 @@ function App() {
                                 name={username}
                                 token={token}
                                 userId={userId}
+                                setOrder = {setOrder}
                             />
                         )}
                     />
                     <Route path="/order" component={Orders} />
-                    <Route path="/order2" component={Orders2} />
+                    <Route path="/order2" component={() => (
+                            <Orders2
+                                order={order}
+                            />
+                        )}
+                    />
                     <Route path="/menu" component={Menu} />
                 </Switch>
             </div>
