@@ -6,6 +6,9 @@ import SideNav, {
     NavText,
 } from "@trendmicro/react-sidenav";
 import { Route } from "react-router-dom";
+import StoreSharpIcon from "@material-ui/icons/StoreSharp";
+import HistoryIcon from "@material-ui/icons/History";
+import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
 import "./SideBar.css";
 const Sidebar = () => {
     return (
@@ -32,10 +35,7 @@ const Sidebar = () => {
                         </NavItem>
                         <NavItem eventKey="shop">
                             <NavIcon>
-                                <i
-                                    className="fa fa-users"
-                                    style={{ fontSize: "1.7em" }}
-                                ></i>
+                                <AddCircleOutlinedIcon />
                             </NavIcon>
                             <NavText>我要開團</NavText>
                         </NavItem>

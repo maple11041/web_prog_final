@@ -17,8 +17,8 @@ import Orders from "./components/Orders";
 import Menu from "./components/Menu";
 
 import Orders2 from "./components/Orders2";
-import History from "./components/History"
-import MyOrder from "./components/MyOrder"
+import History from "./components/History";
+import MyOrder from "./components/MyOrder";
 function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
@@ -50,7 +50,7 @@ function App() {
     };
     return (
         <Router>
-            <Sidebar />
+            {token !== "" ? <Sidebar /> : null}
             <div className="App">
                 <NavBar token={token} />
                 <Switch>
@@ -131,7 +131,7 @@ function App() {
                             />
                         )}
                     />
-                    
+
                     <Route path="/order" component={Orders} />
                     <Route
                         path="/order2"

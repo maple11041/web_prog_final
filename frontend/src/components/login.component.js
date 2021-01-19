@@ -1,9 +1,11 @@
 import React, { Component, useState, onClick } from "react";
 import { LoginSubmit } from "./axios/user";
+import { useHistory } from "react-router-dom";
 
 export default function Login({ setName, setToken, setId }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    let history = useHistory();
 
     const typingEmail = (e) => {
         setEmail(e.target.value);
@@ -27,6 +29,7 @@ export default function Login({ setName, setToken, setId }) {
             setName(back.name);
             setToken(back.token);
             setId(back.userId);
+            history.push("/shop");
         }
     };
 
