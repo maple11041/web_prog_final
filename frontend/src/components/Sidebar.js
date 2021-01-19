@@ -48,6 +48,15 @@ const Sidebar = () => {
                             </NavIcon>
                             <NavText>進行中的團</NavText>
                         </NavItem>
+                        <NavItem eventKey="my">
+                            <NavIcon>
+                                <i
+                                    className="fa fa-beer"
+                                    style={{ fontSize: "1.75em" }}
+                                ></i>
+                            </NavIcon>
+                            <NavText>管理我的團</NavText>
+                        </NavItem>
                     </SideNav.Nav>
                 </SideNav>
             )}
