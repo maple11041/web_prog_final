@@ -17,7 +17,6 @@ const CreateGroup = async (leader, shop, description) => {
             console.log(error.response);
         });
     return;
-    
 };
 
 const CheckGroup = async () => {
@@ -35,12 +34,11 @@ const CheckGroup = async () => {
         });
 
     return groups;
-    
 };
 
 const CheckMyGroup = async (id) => {
     var groups;
-    const url = "/users/" + id
+    const url = "/users/" + id;
     await instance
         .get(url)
         .then(function (response) {
@@ -53,7 +51,6 @@ const CheckMyGroup = async (id) => {
         });
 
     return groups;
-    
 };
 
 export { CreateGroup, CheckGroup, CheckMyGroup };

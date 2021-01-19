@@ -13,12 +13,10 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import { withStyles } from "@material-ui/core/styles";
 
-import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { green } from "@material-ui/core/colors";
 import Checkbox from "@material-ui/core/Checkbox";
+import { changePaidStatus } from "./axios/order";
 
 import "./Order.css";
 
@@ -38,6 +36,14 @@ function Row(props) {
         checkedB: row.paid,
     });
     // console.log(row);
+    const handleCheck = async (orderId, status, event) => {
+        const order = await changePaidStatus(orderId, !status);
+        // console.log(order);
+        setState({
+            ...state,
+            [event.target.name]: !status,
+        });
+    };
 
     return (
         <>
@@ -66,12 +72,9 @@ function Row(props) {
                                 name="checkedB"
                                 color="primary"
                                 checked={state.checkedB}
-                                onClick={(e) => {
-                                    setState({
-                                        ...state,
-                                        [e.target.name]: e.target.checked,
-                                    });
-                                }}
+                                onClick={(e) =>
+                                    handleCheck(row.orderId, state.checkedB, e)
+                                }
                             />
                         }
                     />
@@ -191,10 +194,11 @@ function FirstStep(orders) {
 
 function CreateNew(orderId, name, item, number, paid, price) {
     return {
+        orderId,
         name,
         price,
         paid,
-        history: [{ orderId, item, number, price }],
+        history: [{ item, number, price }],
     };
 }
 
