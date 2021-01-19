@@ -50,8 +50,9 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
 
     };
 
-    const change = async (groupId) => {
+    const changestate = async (groupId) => {
         await ChangeStatus(groupId,"closed")
+
     }
 
     // console.log(shops.body);
@@ -64,7 +65,7 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
                     <CardBody>
                         <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
-                        <Button onClick={() => change(item.gp.id)}>關團</Button>
+                        <Button onClick={() => changestate(item.gp.id)}>關團</Button>
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>
                             
                             
