@@ -24,23 +24,22 @@ const PlaceOrder = async (creator, orderItems, amount,groupId) => {
 
 
 const SearchOrder = async (id) => {
-    const url = "/" + id
-    
-    var order;
-    
+    /*
+    var groups;
+    const url = "/users/" + id
     await instance
         .get(url)
         .then(function (response) {
             console.log(response);
-            console.log(response.data.orders);
-            order = response.data.orders;
+            console.log(response.data);
+            groups = response.data.groups;
         })
         .catch(function (error) {
             console.log(error.response);
         });
 
-    return order;
-    
+    return groups;
+    */
     
 };
 
