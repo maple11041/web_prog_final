@@ -16,6 +16,7 @@ import MyGroup from "./components/MyGroup";
 import Orders from "./components/Orders";
 import Menu from "./components/Menu";
 
+import Orders2 from "./components/Orders2";
 function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
@@ -115,6 +116,7 @@ function App() {
                         )}
                     />
                     <Route path="/order" component={Orders} />
+                    <Route path="/order2" component={Orders2} />
                     <Route path="/menu" component={Menu} />
                 </Switch>
             </div>
