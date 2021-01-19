@@ -33,7 +33,12 @@ export default function CollapsibleTable({userId,setOrder}) {
     useEffect(() => {
         const Output = async () => {
             const order = await SearchWhatIBought(userId);
-            setOrder(order)
+            const order2 = order.map((item) => {
+                item.creator = item.group
+                return item
+            })
+            console.log(order2)
+            setOrder(order2)
             routeChange()
         };
         Output();
