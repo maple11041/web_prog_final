@@ -13,11 +13,13 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { Avatar } from "@material-ui/core";
 
 import CheckIcon from "@material-ui/icons/Check";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import "./Order.css";
+import { shop_img } from "./shop_img.json";
 
 const useRowStyles = makeStyles({
     root: {
@@ -49,7 +51,14 @@ function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    <Avatar
+                        style={{ display: "inline-block" }}
+                        alt="Remy Sharp"
+                        src={row.shopImg}
+                    />
+                </TableCell>
+                <TableCell component="th" scope="row">
+                    {`${row.name} 的團`}
                 </TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="center">
@@ -140,7 +149,7 @@ function FirstStep(orders) {
         var item = [];
         var number = [];
         var same = false;
-        const orderId = e._id;
+        const orderId = e.group._id;
         const userId = e.creator;
         e.orderItems.map((f) => {
             item = [...item, f.item];
@@ -148,9 +157,11 @@ function FirstStep(orders) {
         });
         const paid = e.payed;
         const price = e.amount;
-        console.log(orderId, userId, item, number, paid, price);
+        const shopImg = shop_img.find((shop) => shop.title === e.shopName).img;
+        // console.log(shopImg);
+        // console.log(orderId, userId, item, number, paid, price);
         for (var i = 0; i < rows.length; i++) {
-            if (rows[i].name === userId) {
+            if (rows[i].orderId === orderId) {
                 rows[i].history = [
                     { orderId, item, number, price },
                     ...rows[i].history,
@@ -163,21 +174,23 @@ function FirstStep(orders) {
         if (!same) {
             rows = [
                 ...rows,
-                CreateNew(orderId, userId, item, number, paid, price),
+                CreateNew(orderId, userId, item, number, paid, price, shopImg),
             ];
         }
-        console.log(rows);
+        // console.log(rows);
     });
     console.log(rows);
     return rows;
 }
 
-function CreateNew(orderId, name, item, number, paid, price) {
+function CreateNew(orderId, name, item, number, paid, price, shopImg) {
     return {
+        orderId,
+        shopImg,
         name,
         price,
         paid,
-        history: [{ orderId, item, number, price }],
+        history: [{ item, number, price }],
     };
 }
 
@@ -191,6 +204,7 @@ export default function CollapsibleTable({ order }) {
                     <TableHead>
                         <TableRow>
                             <TableCell />
+                            <TableCell>商店</TableCell>
                             <TableCell>開團人</TableCell>
                             <TableCell align="right">總金額</TableCell>
                             <TableCell align="center">付款狀態</TableCell>

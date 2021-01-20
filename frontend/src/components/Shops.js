@@ -1,11 +1,9 @@
 import { React, useState } from "react";
 import {
-    Card,
     CardImg,
     CardText,
     CardBody,
     CardTitle,
-    Button,
     Row,
     Col,
     Modal,
@@ -15,13 +13,31 @@ import {
 } from "reactstrap";
 import "./Shop.css";
 import { CreateGroup } from "./axios/group";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-const Shops = ({ shops, name, token,userId }) => {
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 345,
+    },
+    media: {
+        height: 140,
+    },
+});
+
+const Shops = ({ shops, name, token, userId }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
     const [selectedShop, setSelectedShop] = useState("");
     const [description, setDescription] = useState("");
+    const classes = useStyles();
 
     const createRequest = () => {
         setModal(!modal);
@@ -39,19 +55,44 @@ const Shops = ({ shops, name, token,userId }) => {
     // console.log(shops.body);
     const render = shops.body.map((shop) => {
         return (
-            <Col xs="12" md="4" lg="3">
-                <Card>
-                    <CardImg top width="30px" height="200px" src={shop.img} />
-                    <CardBody>
-                        <CardTitle tag="h2">{shop.title}</CardTitle>
-                        <CardText>{shop.text}</CardText>
-                        <Button>查看菜單</Button>
-                        <Button onClick={() => toggle(shop.title)}>
-                            我要開團
-                        </Button>
-                    </CardBody>
-                </Card>
-            </Col>
+            <Card className={classes.root} style={{ margin: "3%" }}>
+                <CardActionArea style={{ outline: "none" }}>
+                    <CardMedia
+                        style={{ height: "200px", width: "250px" }}
+                        className={classes.media}
+                        image={shop.img}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {shop.title}
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            component="p"
+                        >
+                            {shop.text}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <Button
+                        style={{ outline: "none" }}
+                        size="medium"
+                        color="primary"
+                    >
+                        查看菜單
+                    </Button>
+                    <Button
+                        size="medium"
+                        color="primary"
+                        onClick={() => toggle(shop.title)}
+                        style={{ outline: "none" }}
+                    >
+                        我要開團
+                    </Button>
+                </CardActions>
+            </Card>
         );
     });
     // console.log(render);
