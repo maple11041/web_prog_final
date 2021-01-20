@@ -1,4 +1,4 @@
-import React, { Component, useState, onClick } from "react";
+import React, { Component, useState, onClick} from "react";
 import {SignUpSubmit} from './axios/user'
 import { useHistory } from "react-router-dom";
 
@@ -42,6 +42,8 @@ export default function SignUp({ setName,setToken,setId }) {
             history.push("/shop");
         }
     };
+
+    
 
     return (
         <div className="auth-wrapper">

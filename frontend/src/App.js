@@ -23,7 +23,7 @@ function App() {
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
     const [userId, setId] = useState("");
-    const [order, setOrder] = useState("123");
+    const [order, setOrder] = useState("");
 
     const shopData = {
         title: "飲料店總覽",
@@ -52,7 +52,7 @@ function App() {
         <Router>
             {token !== "" ? <Sidebar /> : null}
             <div className="App">
-                <NavBar token={token} name = {username} />
+                <NavBar token={token} name = {username} setName = {setUsername} setToken = {setToken} setId = {setId} />
                 <Switch>
                     <Route
                         exact

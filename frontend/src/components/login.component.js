@@ -1,4 +1,4 @@
-import React, { Component, useState, onClick } from "react";
+import React, { Component, useState, onClick , useEffect } from "react";
 import { LoginSubmit } from "./axios/user";
 import { useHistory } from "react-router-dom";
 
@@ -32,6 +32,8 @@ export default function Login({ setName, setToken, setId }) {
             history.push("/shop");
         }
     };
+
+    
 
     return (
         <div className="auth-wrapper">
