@@ -46,6 +46,11 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
         const orders = await SearchOrder(groupId)
         console.log(orders)
         setOrder(orders)
+        const buffer = {order:orders}
+            
+        localStorage.setItem('order', JSON.stringify(buffer))
+        //console.log(response)
+        
         routeChange()
 
     };
@@ -80,7 +85,11 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
 
     useEffect(() => {
         const Output = async () => {
-            const group = await CheckMyGroup(userId); 
+            var group = await CheckMyGroup(userId); 
+            if(!group)
+            {
+                group = []
+            }
             // console.log(group);
             var data = [];
             group.map((gp) => {
@@ -100,7 +109,7 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
             setData(data);
         };
         Output();
-    }, []);
+    }, [userId]);
 
     // console.log(outData);
 

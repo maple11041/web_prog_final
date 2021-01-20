@@ -38,7 +38,14 @@ export default function SignUp({ setName,setToken,setId }) {
             //TODO signup後要幹嘛
             setName(back.name);
             setToken(back.token);
-            setId(back.userId);            
+            setId(back.userId); 
+            const buffer = {name:back.name,
+                token:back.token,
+                id:back.userId}
+                
+            localStorage.setItem('user', JSON.stringify(buffer))
+            //console.log(response)
+                       
             history.push("/shop");
         }
     };

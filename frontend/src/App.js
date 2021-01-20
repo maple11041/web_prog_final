@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -20,6 +20,22 @@ import Orders2 from "./components/Orders2";
 import History from "./components/History";
 import MyOrder from "./components/MyOrder";
 function App() {
+    useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUsername(foundUser.name);
+      setToken(foundUser.token)
+      setId(foundUser.id)
+    }
+    const logOrder = localStorage.getItem("order");
+    if (logOrder) {
+      const foundUser = JSON.parse(logOrder);
+      console.log(foundUser)
+      setOrder(foundUser.order);
+    }
+    }, []);
+
     const [username, setUsername] = useState("Guest");
     const [token, setToken] = useState("");
     const [userId, setId] = useState("");

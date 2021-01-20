@@ -203,8 +203,16 @@ function CreateNew(orderId, name, item, number, paid, price) {
 }
 
 export default function CollapsibleTable({ order }) {
-    const rows = FirstStep(order);
-    //const rows = []
+    const [outRow,setRow] = useState([])
+    
+    useEffect(() => {
+        if(order)
+        {  setRow(FirstStep(order));}
+        else 
+        {
+            console.log('OAO')
+        }
+    }, [order]);
     return (
         <div className="table-wrapper">
             <TableContainer component={Paper} style={{ width: "80%" }}>
@@ -218,7 +226,7 @@ export default function CollapsibleTable({ order }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {outRow.map((row) => (
                             <Row key={row.name} row={row} />
                         ))}
                     </TableBody>
