@@ -68,9 +68,10 @@ const MyGroup = ({ shops, name, token, userId,setOrder }) => {
                 <Card>
                     <CardImg top width="30px" height="200px" src={shop.img} />
                     <CardBody>
-                        <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
+                        <CardTitle tag="h5">{item.gp.leader.name} 的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
-                        <Button onClick={() => changestate(item.gp.id)}>關團</Button>
+                        {item.gp.status==="OnGoing" ?(<Button onClick={() => {changestate(item.gp.id); window.location.reload()}}>關團</Button>):null}
+                        
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>
                             
                             
