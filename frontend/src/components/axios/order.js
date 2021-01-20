@@ -46,7 +46,7 @@ const SearchWhatIBought = async (id) => {
     await instance
         .get(url)
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             console.log(response.data.orders);
             order = response.data.orders;
         })
