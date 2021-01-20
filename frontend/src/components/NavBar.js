@@ -1,5 +1,6 @@
-import { Link, useHistory  } from "react-router-dom";
-const NavBar = ({ token,name,setName,setId,setToken }) => {
+import { Link, useHistory } from "react-router-dom";
+import LocalDrinkIcon from "@material-ui/icons/LocalDrink";
+const NavBar = ({ token, name, setName, setId, setToken }) => {
     let history = useHistory();
 
     const RightBar = () => {
@@ -23,17 +24,16 @@ const NavBar = ({ token,name,setName,setId,setToken }) => {
             return (
                 <>
                     <li className="nav-item">
-                        <Link className="nav-link" to={"/my"}>
-                            我開的團
-                        </Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to={"/hist"}>
                             我的訂單
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link onClick = {logout} className="nav-link" to={"/sign-in"}>
+                        <Link
+                            onClick={logout}
+                            className="nav-link"
+                            to={"/sign-in"}
+                        >
                             登出
                         </Link>
                     </li>
@@ -42,19 +42,24 @@ const NavBar = ({ token,name,setName,setId,setToken }) => {
         }
     };
 
-    const logout = (e) =>{
-        e.preventDefault()
-        setName("Guest")
-        setId("")
-        setToken("")
+    const logout = (e) => {
+        e.preventDefault();
+        setName("Guest");
+        setId("");
+        setToken("");
         localStorage.clear();
         history.push("/sign-in");
-    }
+    };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
             <div className="container">
-                <Link className="navbar-brand" to={"/sign-in"}>
+                <LocalDrinkIcon />
+                <Link
+                    className="navbar-brand"
+                    to={"/sign-in"}
+                    style={{ marginLeft: "2%" }}
+                >
                     Hello, {name}
                 </Link>
                 <div className="collapse navbar-collapse">
