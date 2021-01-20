@@ -39,9 +39,15 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
 
     const classes = useStyles();
     const [status, setStatue] = useState("進行中");
+    const [show,setShow] = useState("OnGoing")
 
     const handleChange = (event) => {
         setStatue(event.target.value);
+        console.log(status)
+        if(status !== "進行中" )
+        {setShow("OnGoing")}
+        else
+            {setShow("closed")}
     };
 
     const [modal, setModal] = useState(false);
@@ -121,9 +127,9 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
             // console.log(group);
             var data = [];
             group.map((gp) => {
-                // console.log(gp.status);
-                //if (gp.status === "OnGoing") {
-                if (true) {
+                console.log(gp.status);
+                console.log(show)
+                if (gp.status === show){
                     shops.body.map((shop) => {
                         // console.log(shop.title);
                         // console.log(gp.shop);
@@ -137,7 +143,7 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
             setData(data);
         };
         Output();
-    }, [status]);
+    }, [status,show]);
 
     // console.log(outData);
 
