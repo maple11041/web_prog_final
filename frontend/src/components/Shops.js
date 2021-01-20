@@ -44,28 +44,26 @@ const Shops = ({ shops, name, token, userId }) => {
     const createRequest = () => {
         setModal(!modal);
         CreateGroup(userId, selectedShop, description);
-        alert('成功')
+        alert("成功");
     };
 
     const toggle = (shopName) => {
         // console.log(token);
-        console.log('12345')
+        console.log("12345");
         if (token === "") alert("Please login first");
         else {
             setModal(!modal);
             setSelectedShop(shopName);
-
         }
     };
 
     const toggle2 = (shopName) => {
         // console.log(token);
-        console.log('12345')
+        console.log("12345");
         if (token === "") alert("Please login first");
         else {
             setModal2(!modal2);
             setSelectedShop(shopName);
-
         }
     };
 
@@ -105,7 +103,11 @@ const Shops = ({ shops, name, token, userId }) => {
                         size="medium"
                         color="primary"
                         onClick={() => toggle(shop.title)}
-                        style={{ outline: "none" }}
+                        style={{
+                            outline: "none",
+                            marginLeft: "auto",
+                            marginRight: 0,
+                        }}
                     >
                         我要開團
                     </Button>
@@ -121,7 +123,7 @@ const Shops = ({ shops, name, token, userId }) => {
                 <h2>{shops.title}</h2>
                 <Row>{render}</Row>
 
-                <Modal isOpen={modal}  toggle={() => toggle()}>
+                <Modal isOpen={modal} toggle={() => toggle()}>
                     <ModalHeader>{selectedShop}</ModalHeader>
                     <ModalBody>
                         <div className="form-group">
@@ -144,17 +146,24 @@ const Shops = ({ shops, name, token, userId }) => {
                     </ModalFooter>
                 </Modal>
 
-                <Modal isOpen={modal2}  size = "lg" toggle={() => setModal2(!modal2)}>
+                <Modal
+                    isOpen={modal2}
+                    size="lg"
+                    toggle={() => setModal2(!modal2)}
+                >
                     <ModalHeader>{selectedShop}</ModalHeader>
-                    <ModalBody className = "App">
-                        <Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />
+                    <ModalBody className="App">
+                        <Menu
+                            selectedShop={selectedShop}
+                            groupId="no_need"
+                            userId={userId}
+                            state={false}
+                        />
                     </ModalBody>
                 </Modal>
-
             </div>
         </div>
-    )
-    
+    );
 };
 
 export default Shops;
