@@ -1,10 +1,12 @@
-import React, { Component, useState, onClick } from "react";
+import React, { Component, useState, onClick} from "react";
 import {SignUpSubmit} from './axios/user'
+import { useHistory } from "react-router-dom";
 
 export default function SignUp({ setName,setToken,setId }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
+    let history = useHistory();
     //const alert = useAlert()
 
     const typingEmail = (e) => {
@@ -34,8 +36,21 @@ export default function SignUp({ setName,setToken,setId }) {
         else
         {
             //TODO signup後要幹嘛
+            setName(back.name);
+            setToken(back.token);
+            setId(back.userId); 
+            const buffer = {name:back.name,
+                token:back.token,
+                id:back.userId}
+                
+            localStorage.setItem('user', JSON.stringify(buffer))
+            //console.log(response)
+                       
+            history.push("/shop");
         }
     };
+
+    
 
     return (
         <div className="auth-wrapper">

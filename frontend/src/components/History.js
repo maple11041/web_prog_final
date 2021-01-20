@@ -21,6 +21,10 @@ export default function CollapsibleTable({ userId, setOrder }) {
             });
             // console.log(order2);
             setOrder(order2);
+            const buffer = {order:order2}
+            
+        localStorage.setItem('order', JSON.stringify(buffer))
+        //console.log(response)
             routeChange();
         };
         Output();
