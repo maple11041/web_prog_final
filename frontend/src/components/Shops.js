@@ -21,6 +21,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Menu from "./Menu";
 
 const useStyles = makeStyles({
     root: {
@@ -42,6 +43,7 @@ const Shops = ({ shops, name, token, userId }) => {
     const createRequest = () => {
         setModal(!modal);
         CreateGroup(userId, selectedShop, description);
+        alert('成功')
     };
 
     const toggle = (shopName) => {
@@ -50,6 +52,7 @@ const Shops = ({ shops, name, token, userId }) => {
         else {
             setModal(!modal);
             setSelectedShop(shopName);
+
         }
     };
     // console.log(shops.body);
@@ -80,6 +83,7 @@ const Shops = ({ shops, name, token, userId }) => {
                         style={{ outline: "none" }}
                         size="medium"
                         color="primary"
+                        onClick={() => toggle(shop.title)}
                     >
                         查看菜單
                     </Button>
@@ -97,7 +101,7 @@ const Shops = ({ shops, name, token, userId }) => {
     });
     // console.log(render);
 
-    return (
+    return !selectedShop ?(
         <div className="shop-wrapper">
             <div className="shop-container">
                 <h2>{shops.title}</h2>
@@ -126,7 +130,8 @@ const Shops = ({ shops, name, token, userId }) => {
                 </Modal>
             </div>
         </div>
-    );
+    ):
+    (<Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />)
 };
 
 export default Shops;

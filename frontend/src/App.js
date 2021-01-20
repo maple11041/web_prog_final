@@ -158,6 +158,7 @@ function App() {
                         component={() => <MyOrder order={order} />}
                     />
                     <Route path="/menu" component={Menu} />
+                    <Route path="/menu2" component={Menu} />
                 </Switch>
             </div>
         </Router>

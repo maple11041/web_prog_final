@@ -10,7 +10,7 @@ import { shops } from "./shops.json";
 import "./Menu.css";
 import { PlaceOrder } from "./axios/order";
 
-export default function Menu({ selectedShop,groupId,userId }) {
+export default function Menu({ selectedShop,groupId,userId,state }) {
     console.log(selectedShop);
     const [shopItem, setShopItem] = useState(
         shops.find((shop) => shop.Name === selectedShop).items
@@ -71,11 +71,15 @@ export default function Menu({ selectedShop,groupId,userId }) {
                         setOrderItems={setOrderItems}
                     />
                 </div>
-                <Total total={totalPrice} />
+                {state?<Total total={totalPrice} />:null}
             </div>
+        {state?
+        (
             <div className="button-wrapper">
                 <Button onClick = {SendOrder}>送出</Button>
             </div>
+        ):
+        null}
         </>
     );
 }

@@ -26,6 +26,7 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
     const [description, setDescription] = useState("");
     const [outData, setData] = useState([]);
     const [gpId,setgpId] = useState('')
+    const [state,setState] = useState(true)
     // const [selctedIdx, setSelectIdx] = useState(-1);
 
     const createRequest = () => {
@@ -51,7 +52,7 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
                     <CardBody>
                         <CardTitle tag="h5">{item.gp.leader.name} 的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
-                        <Button>查看菜單</Button>
+                        <Button onClick={() => {setState(false);toggle(shop.title,item.gp.id)}} >查看菜單</Button>
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>加入</Button>
                     </CardBody>
                 </Card>
@@ -92,7 +93,7 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
             </div>
         </div>
     ) : (
-        <Menu selectedShop={selectedShop} groupId = {gpId} userId = {userId} />
+        <Menu selectedShop={selectedShop} groupId = {gpId} userId = {userId} state = {state} />
     );
 };
 
