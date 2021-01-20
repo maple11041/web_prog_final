@@ -14,7 +14,7 @@ import {
     ModalBody,
     ModalFooter,
 } from "reactstrap";
-import "./JoinGroup.css";
+import "./Shop.css";
 import { CheckGroup } from "./axios/group";
 import Menu from "./Menu";
 
@@ -38,6 +38,15 @@ const JoinGroup = ({ shops, name, token, userId }) => {
         // console.log(index);
         setSelectedShop(shopName);
         setgpId(groupId);
+        setState(false)
+        // console.log(shopName);
+        // console.log(selctedIdx);
+    };
+
+     const toggle2 = (shopName, groupId) => {
+        // console.log(index);
+        setSelectedShop(shopName);
+        setgpId(groupId);
         setModal(!modal);
         // console.log(shopName);
         // console.log(selctedIdx);
@@ -57,8 +66,7 @@ const JoinGroup = ({ shops, name, token, userId }) => {
                         <CardText>{item.gp.description}</CardText>
                         <Button
                             onClick={() => {
-                                setState(false);
-                                toggle(shop.title, item.gp.id);
+                                toggle2(shop.title, item.gp.id);
                             }}
                         >
                             查看菜單
@@ -97,7 +105,7 @@ const JoinGroup = ({ shops, name, token, userId }) => {
 
     // console.log(selctedIdx);
 
-    return (
+    return state?(
         <div className="shop-wrapper">
             <div className="shop-container">
                 <h2>{shops.title}</h2>
@@ -116,7 +124,14 @@ const JoinGroup = ({ shops, name, token, userId }) => {
                 </Modal>
             </div>
         </div>
-    );
+    ):(
+        <Menu
+            selectedShop={selectedShop}
+            groupId={gpId}
+            userId={userId}
+            state={true}
+        />
+    )
 };
 
 export default JoinGroup;

@@ -10,6 +10,8 @@ import { shops } from "./shops.json";
 import "./Menu.css";
 import { PlaceOrder } from "./axios/order";
 
+import { useHistory } from "react-router-dom";
+
 export default function Menu({ selectedShop,groupId,userId,state }) {
     console.log(selectedShop);
     const [shopItem, setShopItem] = useState(
@@ -43,7 +45,15 @@ export default function Menu({ selectedShop,groupId,userId,state }) {
         console.log(groupId)
         console.log(userId)
         PlaceOrder(userId,orderForm,totalPrice,groupId)
+        alert('下單成功')
+        routeChange()
     }
+    const history = useHistory();
+
+    const routeChange = () => {
+        let path = `shop`;
+        history.push(path);
+    };
 
     // console.log(shopItem);
     // console.log(shops[0]["items"]);
