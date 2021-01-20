@@ -49,7 +49,7 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
                 <Card>
                     <CardImg top width="30px" height="200px" src={shop.img} />
                     <CardBody>
-                        <CardTitle tag="h5">xxx的{shop.title} 團</CardTitle>
+                        <CardTitle tag="h5">{item.gp.leader.name} 的{shop.title} 團</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         <Button>查看菜單</Button>
                         <Button onClick={() => toggle(shop.title,item.gp.id)}>加入</Button>
