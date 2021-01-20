@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const NavBar = ({ token }) => {
+const NavBar = ({ token,name }) => {
     const RightBar = () => {
         console.log("token", token);
         if (token === "") {
@@ -39,7 +39,7 @@ const NavBar = ({ token }) => {
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
             <div className="container">
                 <Link className="navbar-brand" to={"/sign-in"}>
-                    positronX.io
+                    Hello, {name}
                 </Link>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto">{RightBar()}</ul>

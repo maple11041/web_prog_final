@@ -52,7 +52,7 @@ function App() {
         <Router>
             {token !== "" ? <Sidebar /> : null}
             <div className="App">
-                <NavBar token={token} />
+                <NavBar token={token} name = {username} />
                 <Switch>
                     <Route
                         exact
