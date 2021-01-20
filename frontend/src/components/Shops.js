@@ -36,6 +36,7 @@ const Shops = ({ shops, name, token, userId }) => {
     // var shopName = "test";
 
     const [modal, setModal] = useState(false);
+    const [modal2, setModal2] = useState(false);
     const [selectedShop, setSelectedShop] = useState("");
     const [description, setDescription] = useState("");
     const classes = useStyles();
@@ -48,6 +49,7 @@ const Shops = ({ shops, name, token, userId }) => {
 
     const toggle = (shopName) => {
         // console.log(token);
+        console.log('12345')
         if (token === "") alert("Please login first");
         else {
             setModal(!modal);
@@ -55,6 +57,18 @@ const Shops = ({ shops, name, token, userId }) => {
 
         }
     };
+
+    const toggle2 = (shopName) => {
+        // console.log(token);
+        console.log('12345')
+        if (token === "") alert("Please login first");
+        else {
+            setModal2(!modal2);
+            setSelectedShop(shopName);
+
+        }
+    };
+
     // console.log(shops.body);
     const render = shops.body.map((shop) => {
         return (
@@ -83,7 +97,7 @@ const Shops = ({ shops, name, token, userId }) => {
                         style={{ outline: "none" }}
                         size="medium"
                         color="primary"
-                        onClick={() => toggle(shop.title)}
+                        onClick={() => toggle2(shop.title)}
                     >
                         查看菜單
                     </Button>
@@ -101,12 +115,13 @@ const Shops = ({ shops, name, token, userId }) => {
     });
     // console.log(render);
 
-    return !selectedShop ?(
+    return (
         <div className="shop-wrapper">
             <div className="shop-container">
                 <h2>{shops.title}</h2>
                 <Row>{render}</Row>
-                <Modal isOpen={modal} toggle={() => toggle()}>
+
+                <Modal isOpen={modal}  toggle={() => toggle()}>
                     <ModalHeader>{selectedShop}</ModalHeader>
                     <ModalBody>
                         <div className="form-group">
@@ -128,10 +143,25 @@ const Shops = ({ shops, name, token, userId }) => {
                         </Button>
                     </ModalFooter>
                 </Modal>
+
+                <Modal isOpen={modal2}  size = "lg" toggle={() => setModal2(!modal2)}>
+                    <ModalHeader>{selectedShop}</ModalHeader>
+                    <ModalBody className = "App">
+                        <Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />
+                    </ModalBody>
+                </Modal>
+
             </div>
         </div>
-    ):
-    (<Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />)
+    )
+    
 };
 
 export default Shops;
+//(<Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />)
+/*
+className: PropTypes.string,
+  wrapClassName: PropTypes.string,
+  modalClassName: PropTypes.string,
+  backdropClassName: PropTypes.string,
+  contentClassName: PropTypes.string,*/

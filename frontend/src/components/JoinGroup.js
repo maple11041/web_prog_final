@@ -38,6 +38,7 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
         // console.log(index);
         setSelectedShop(shopName);
         setgpId(groupId)
+        setModal(!modal);
         // console.log(shopName);
         // console.log(selctedIdx);
     };
@@ -85,16 +86,21 @@ const JoinGroup = ({ shops, name, token ,userId}) => {
 
     // console.log(selctedIdx);
 
-    return !selectedShop ? (
+    return (
         <div className="shop-wrapper">
             <div className="shop-container">
                 <h2>{shops.title}</h2>
                 <Row>{render}</Row>
+
+                <Modal isOpen={modal}  size = "lg" toggle={() => setModal(!modal)}>
+                    <ModalHeader>{selectedShop}</ModalHeader>
+                    <ModalBody className = "App">
+                        <Menu selectedShop={selectedShop} groupId = 'no_need' userId = {userId} state ={ false} />
+                    </ModalBody>
+                </Modal>
             </div>
         </div>
-    ) : (
-        <Menu selectedShop={selectedShop} groupId = {gpId} userId = {userId} state = {state} />
-    );
+    ) 
 };
 
 export default JoinGroup;

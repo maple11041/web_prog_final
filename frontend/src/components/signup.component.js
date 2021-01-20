@@ -1,5 +1,5 @@
 import React, { Component, useState, onClick} from "react";
-import {SignUpSubmit} from './axios/user'
+import {SignUpSubmit,LoginSubmit} from './axios/user'
 import { useHistory } from "react-router-dom";
 
 export default function SignUp({ setName,setToken,setId }) {
@@ -24,14 +24,15 @@ export default function SignUp({ setName,setToken,setId }) {
     const clickSignup = async (e) => {
         e.preventDefault()
         console.log('click signup')
-        const back = await SignUpSubmit(username,password,email)
+        const back2 = await SignUpSubmit(username,password,email)
+        const back = await LoginSubmit(email, password);
         console.log(back)
         setUsername('')
         setPassword('')
         setEmail('')
-        if(!back.token)
+        if(!back2.token)
         {
-            alert(back.err)
+            alert(back2.err)
         }
         else
         {
