@@ -47,6 +47,7 @@ const NavBar = ({ token,name,setName,setId,setToken }) => {
         setName("Guest")
         setId("")
         setToken("")
+        localStorage.clear();
         history.push("/sign-in");
     }
 
