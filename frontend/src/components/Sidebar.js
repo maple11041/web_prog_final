@@ -6,9 +6,9 @@ import SideNav, {
     NavText,
 } from "@trendmicro/react-sidenav";
 import { Route } from "react-router-dom";
-import StoreSharpIcon from "@material-ui/icons/StoreSharp";
-import HistoryIcon from "@material-ui/icons/History";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import AddCircleOutlinedIcon from "@material-ui/icons/AddCircleOutlined";
+import PlaylistAddCheckIcon from "@material-ui/icons/PlaylistAddCheck";
 import "./SideBar.css";
 const Sidebar = () => {
     return (
@@ -24,15 +24,6 @@ const Sidebar = () => {
                 >
                     <SideNav.Toggle />
                     <SideNav.Nav defaultSelected="home">
-                        <NavItem eventKey="home">
-                            <NavIcon>
-                                <i
-                                    className="fa fa-fw fa-home"
-                                    style={{ fontSize: "1.7em" }}
-                                />
-                            </NavIcon>
-                            <NavText>Home</NavText>
-                        </NavItem>
                         <NavItem eventKey="shop">
                             <NavIcon>
                                 <AddCircleOutlinedIcon />
@@ -41,19 +32,13 @@ const Sidebar = () => {
                         </NavItem>
                         <NavItem eventKey="add">
                             <NavIcon>
-                                <i
-                                    className="fa fa-beer"
-                                    style={{ fontSize: "1.75em" }}
-                                ></i>
+                                <TrendingUpIcon />
                             </NavIcon>
                             <NavText>進行中的團</NavText>
                         </NavItem>
                         <NavItem eventKey="my">
                             <NavIcon>
-                                <i
-                                    className="fa fa-beer"
-                                    style={{ fontSize: "1.75em" }}
-                                ></i>
+                                <PlaylistAddCheckIcon />
                             </NavIcon>
                             <NavText>管理我的團</NavText>
                         </NavItem>

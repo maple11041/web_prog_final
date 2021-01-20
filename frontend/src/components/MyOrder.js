@@ -195,17 +195,16 @@ function CreateNew(orderId, name, item, number, paid, price, shopImg) {
 }
 
 export default function CollapsibleTable({ order }) {
-    const [outRow,setRow] = useState([])
-    
+    const [outRow, setRow] = useState([]);
+
     useEffect(() => {
-        if(order)
-        {  setRow(FirstStep(order));}
-        else 
-        {
-            console.log('OAO')
+        if (order) {
+            setRow(FirstStep(order));
+        } else {
+            console.log("OAO");
         }
     }, [order]);
-    
+
     //const rows = []
     return (
         <div className="table-wrapper">
@@ -221,9 +220,15 @@ export default function CollapsibleTable({ order }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {outRow.map((row) => (
-                            <Row key={row.name} row={row} />
-                        ))}
+                        {outRow.length !== 0 ? (
+                            outRow.map((row) => (
+                                <Row key={row.name} row={row} />
+                            ))
+                        ) : (
+                            <div style={{ textAlign: "center" }}>
+                                目前無任何訂單！
+                            </div>
+                        )}
                     </TableBody>
                 </Table>
             </TableContainer>
