@@ -39,15 +39,16 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
 
     const classes = useStyles();
     const [status, setStatue] = useState("進行中");
-    const [show,setShow] = useState("OnGoing")
+    const [show, setShow] = useState("OnGoing");
 
     const handleChange = (event) => {
         setStatue(event.target.value);
-        console.log(status)
-        if(status !== "進行中" )
-        {setShow("OnGoing")}
-        else
-            {setShow("closed")}
+        console.log(status);
+        if (status !== "進行中") {
+            setShow("OnGoing");
+        } else {
+            setShow("closed");
+        }
     };
 
     const [modal, setModal] = useState(false);
@@ -94,9 +95,7 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
                 <Card>
                     <CardImg top width="30px" height="200px" src={shop.img} />
                     <CardBody>
-                        <CardTitle tag="h5">
-                            {item.gp.leader.name} 的{shop.title} 團
-                        </CardTitle>
+                        <CardTitle tag="h5">{shop.title}</CardTitle>
                         <CardText>{item.gp.description}</CardText>
                         {item.gp.status === "OnGoing" ? (
                             <Button
@@ -128,8 +127,8 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
             var data = [];
             group.map((gp) => {
                 console.log(gp.status);
-                console.log(show)
-                if (gp.status === show){
+                console.log(show);
+                if (gp.status === show) {
                     shops.body.map((shop) => {
                         // console.log(shop.title);
                         // console.log(gp.shop);
@@ -143,7 +142,7 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
             setData(data);
         };
         Output();
-    }, [status,show]);
+    }, [status, show]);
 
     // console.log(outData);
 
@@ -170,7 +169,7 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
                     </Select>
                 </FormControl>
             </div>
-            <div className="shop-wrapper">
+            <div className="shop-wrapper-my">
                 <div className="shop-container">
                     <Row>{render}</Row>
                     <Modal isOpen={modal} toggle={toggle}>
