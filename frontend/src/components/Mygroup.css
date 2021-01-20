@@ -1,0 +1,20 @@
+.shop-wrapper {
+    display: flex;
+    margin-top: 2%;
+    justify-content: center;
+}
+
+.shop-container {
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    margin: 5px;
+}
