@@ -104,7 +104,7 @@ const MyGroup = ({ shops, name, token, userId, setOrder }) => {
                                     window.location.reload();
                                 }}
                             >
-                                關團
+                                停止收單
                             </Button>
                         ) : null}
 

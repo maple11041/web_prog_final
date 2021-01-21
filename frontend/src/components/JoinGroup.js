@@ -38,12 +38,12 @@ const JoinGroup = ({ shops, name, token, userId }) => {
         // console.log(index);
         setSelectedShop(shopName);
         setgpId(groupId);
-        setState(false)
+        setState(false);
         // console.log(shopName);
         // console.log(selctedIdx);
     };
 
-     const toggle2 = (shopName, groupId) => {
+    const toggle2 = (shopName, groupId) => {
         // console.log(index);
         setSelectedShop(shopName);
         setgpId(groupId);
@@ -72,7 +72,7 @@ const JoinGroup = ({ shops, name, token, userId }) => {
                             查看菜單
                         </Button>
                         <Button onClick={() => toggle(shop.title, item.gp.id)}>
-                            加入
+                            我要加入
                         </Button>
                     </CardBody>
                 </Card>
@@ -105,10 +105,10 @@ const JoinGroup = ({ shops, name, token, userId }) => {
 
     // console.log(selctedIdx);
 
-    return state?(
+    return state ? (
         <div className="shop-wrapper">
             <div className="shop-container">
-                <h2>{shops.title}</h2>
+                <h2 style={{ marginBottom: "3%" }}>誰在揪團</h2>
                 <Row>{render}</Row>
 
                 <Modal isOpen={modal} size="lg" toggle={() => setModal(!modal)}>
@@ -124,14 +124,14 @@ const JoinGroup = ({ shops, name, token, userId }) => {
                 </Modal>
             </div>
         </div>
-    ):(
+    ) : (
         <Menu
             selectedShop={selectedShop}
             groupId={gpId}
             userId={userId}
             state={true}
         />
-    )
+    );
 };
 
 export default JoinGroup;

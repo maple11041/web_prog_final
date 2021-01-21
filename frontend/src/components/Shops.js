@@ -77,19 +77,19 @@ const Shops = ({ shops, name, token, userId }) => {
                         className={classes.media}
                         image={shop.img}
                     />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {shop.title}
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                        >
-                            {shop.text}
-                        </Typography>
-                    </CardContent>
                 </CardActionArea>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {shop.title}
+                    </Typography>
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                    >
+                        {shop.text}
+                    </Typography>
+                </CardContent>
                 <CardActions>
                     <Button
                         style={{ outline: "none" }}

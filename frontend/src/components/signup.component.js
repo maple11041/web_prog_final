@@ -1,8 +1,8 @@
-import React, { Component, useState, onClick} from "react";
-import {SignUpSubmit,LoginSubmit} from './axios/user'
+import React, { Component, useState, onClick } from "react";
+import { SignUpSubmit, LoginSubmit } from "./axios/user";
 import { useHistory } from "react-router-dom";
 
-export default function SignUp({ setName,setToken,setId }) {
+export default function SignUp({ setName, setToken, setId }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -22,36 +22,33 @@ export default function SignUp({ setName,setToken,setId }) {
     };
 
     const clickSignup = async (e) => {
-        e.preventDefault()
-        console.log('click signup')
-        const back2 = await SignUpSubmit(username,password,email)
+        e.preventDefault();
+        console.log("click signup");
+        const back2 = await SignUpSubmit(username, password, email);
         const back = await LoginSubmit(email, password);
-        console.log(back)
-        setUsername('')
-        setPassword('')
-        setEmail('')
-        if(!back2.token)
-        {
-            alert(back2.err)
-        }
-        else
-        {
+        console.log(back);
+        setUsername("");
+        setPassword("");
+        setEmail("");
+        if (!back2.token) {
+            alert(back2.err);
+        } else {
             //TODO signup後要幹嘛
             setName(back.name);
             setToken(back.token);
-            setId(back.userId); 
-            const buffer = {name:back.name,
-                token:back.token,
-                id:back.userId}
-                
-            localStorage.setItem('user', JSON.stringify(buffer))
+            setId(back.userId);
+            const buffer = {
+                name: back.name,
+                token: back.token,
+                id: back.userId,
+            };
+
+            localStorage.setItem("user", JSON.stringify(buffer));
             //console.log(response)
-                       
+
             history.push("/shop");
         }
     };
-
-    
 
     return (
         <div className="auth-wrapper">
@@ -67,6 +64,7 @@ export default function SignUp({ setName,setToken,setId }) {
                             type="text"
                             className="form-control"
                             placeholder="Username"
+                            style={{ textAlign: "left" }}
                         />
                     </div>
 
@@ -78,6 +76,7 @@ export default function SignUp({ setName,setToken,setId }) {
                             type="email"
                             className="form-control"
                             placeholder="Enter email"
+                            style={{ textAlign: "left" }}
                         />
                     </div>
 
@@ -89,6 +88,7 @@ export default function SignUp({ setName,setToken,setId }) {
                             type="password"
                             className="form-control"
                             placeholder="Enter password"
+                            style={{ textAlign: "left" }}
                         />
                     </div>
 
@@ -100,7 +100,7 @@ export default function SignUp({ setName,setToken,setId }) {
                         Sign Up
                     </button>
                     <p className="forgot-password text-right">
-                        Already registered <a href="#">sign in?</a>
+                        Already registered <a href="/sign-in">sign in?</a>
                     </p>
                 </form>
             </div>
