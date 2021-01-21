@@ -26,21 +26,31 @@ const Sidebar = () => {
                     <SideNav.Nav defaultSelected="home">
                         <NavItem eventKey="shop">
                             <NavIcon>
-                                <AddCircleOutlinedIcon />
+                                <AddCircleOutlinedIcon
+                                    style={{ color: "white" }}
+                                />
                             </NavIcon>
-                            <NavText>我要開團</NavText>
+                            <NavText style={{ color: "white" }}>
+                                我要開團
+                            </NavText>
                         </NavItem>
                         <NavItem eventKey="add">
                             <NavIcon>
-                                <TrendingUpIcon />
+                                <TrendingUpIcon style={{ color: "white" }} />
                             </NavIcon>
-                            <NavText>進行中的團</NavText>
+                            <NavText style={{ color: "white" }}>
+                                進行中的團
+                            </NavText>
                         </NavItem>
                         <NavItem eventKey="my">
                             <NavIcon>
-                                <PlaylistAddCheckIcon />
+                                <PlaylistAddCheckIcon
+                                    style={{ color: "white" }}
+                                />
                             </NavIcon>
-                            <NavText>管理我的團</NavText>
+                            <NavText style={{ color: "white" }}>
+                                管理我的團
+                            </NavText>
                         </NavItem>
                     </SideNav.Nav>
                 </SideNav>

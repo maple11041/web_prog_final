@@ -1,4 +1,4 @@
-import React, { Component, useState, onClick , useEffect } from "react";
+import React, { Component, useState, onClick, useEffect } from "react";
 import { LoginSubmit } from "./axios/user";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -31,19 +31,18 @@ export default function Login({ setName, setToken, setId }) {
             setToken(back.token);
             setId(back.userId);
 
-            const buffer = {name:back.name,
-                token:back.token,
-                id:back.userId}
-                
-            localStorage.setItem('user', JSON.stringify(buffer))
+            const buffer = {
+                name: back.name,
+                token: back.token,
+                id: back.userId,
+            };
+
+            localStorage.setItem("user", JSON.stringify(buffer));
             //console.log(response)
-            
 
             history.push("/shop");
         }
     };
-
-    
 
     return (
         <div className="auth-wrapper">
@@ -98,9 +97,6 @@ export default function Login({ setName, setToken, setId }) {
                     >
                         Submit
                     </button>
-                    <p className="forgot-password text-right">
-                        Forgot <a href="#">password?</a>
-                    </p>
                 </form>
             </div>
         </div>
