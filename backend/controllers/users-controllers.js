@@ -50,6 +50,23 @@ const signup = async (req, res, next) => {
         );
         return next(error);
     }
+    try {
+        existingUser = await User.findOne({ name: name });
+    } catch (err) {
+        const error = new HttpError(
+            "Signing up failed, please try again later.",
+            500
+        );
+        return next(error);
+    }
+
+    if (existingUser) {
+        const error = new HttpError(
+            "User exists already, please login instead.",
+            422
+        );
+        return next(error);
+    }
 
     let hashedPassword;
     try {

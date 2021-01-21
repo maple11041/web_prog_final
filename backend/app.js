@@ -49,7 +49,7 @@ mongoose
     .connect(process.env.MONGO_URL)
     .then(() => {
         console.log("Server is up on port 5000");
-        app.listen(5000);
+        app.listen(5000, "0.0.0.0");
     })
     .catch((err) => {
         console.log(err);
